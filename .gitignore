@@ -1,0 +1,25 @@
+.venv/
+build/
+__pycache__/
+*.pyc
+*.egg-info/
+bench_verilator/obj_*/
+bench_verilator/*.cpp
+bench_verilator/generic/
+third_party/
+
+# LaTeX build artifacts (paper is reproducible via latexmk)
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.run.xml
+*.nav
+*.snm
+*.toc
+paper/aspdac2027.pdf
+.pytest_cache/

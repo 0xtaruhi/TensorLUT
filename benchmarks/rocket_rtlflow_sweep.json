@@ -1,0 +1,109 @@
+{
+  "simulator": "RTLflow (github.com/dian-lun-lin/RTLflow, Verilator 4.203 fork), sm_89, CUDA 12.4 + GCC 13.4",
+  "netlist": "same Rocket LUT/DFF netlist as TensorLUT and Verilator (Rocket_lut.v)",
+  "harness": "scripts/rtlflow/gen_rocket_harness.py: random inputs and clock driven by GPU kernels; two evals per cycle",
+  "patches": [
+    "restored bin/verilator_includer (missing in fork)",
+    "sm_80 -> sm_89",
+    "--output-split 0 (emitter crash otherwise)",
+    "scripts/rtlflow/fix_change_request.py (emitter bug in _change_request)"
+  ],
+  "validation": "8 testbenches, cycles 16 and 64: 9,496 output bits each, 0 mismatches vs TensorLUT gather backend (scripts/rtlflow/check_rtlflow_rocket.py)",
+  "compile_s": {
+    "transpile": 19,
+    "nvcc_model": 565
+  },
+  "results": [
+    {
+      "batch": 64,
+      "cycles": 64,
+      "runs_cycle_stimuli_per_s": [
+        88050.58,
+        89411.81,
+        88725.51
+      ],
+      "median_cycle_stimuli_per_s": 88725.51,
+      "tensorlut_cycle_stimuli_per_s": 222107.88648235466,
+      "tensorlut_over_rtlflow": 2.50331484690654,
+      "rtlflow_signal_bytes_per_seed": 20450
+    },
+    {
+      "batch": 256,
+      "cycles": 64,
+      "runs_cycle_stimuli_per_s": [
+        342739.3,
+        368932.5,
+        315859.7
+      ],
+      "median_cycle_stimuli_per_s": 342739.3,
+      "tensorlut_cycle_stimuli_per_s": 873067.4659032844,
+      "tensorlut_over_rtlflow": 2.54732231145738,
+      "rtlflow_signal_bytes_per_seed": 20450
+    },
+    {
+      "batch": 1024,
+      "cycles": 64,
+      "runs_cycle_stimuli_per_s": [
+        1427835.0,
+        1475193.0,
+        37164.71
+      ],
+      "median_cycle_stimuli_per_s": 1427835.0,
+      "tensorlut_cycle_stimuli_per_s": 3073168.9371827003,
+      "tensorlut_over_rtlflow": 2.1523277809989954,
+      "rtlflow_signal_bytes_per_seed": 20450
+    },
+    {
+      "batch": 4096,
+      "cycles": 64,
+      "runs_cycle_stimuli_per_s": [
+        5446869.0,
+        202354.1,
+        5105361.0
+      ],
+      "median_cycle_stimuli_per_s": 5105361.0,
+      "tensorlut_cycle_stimuli_per_s": 6784768.260338174,
+      "tensorlut_over_rtlflow": 1.328949756998217,
+      "rtlflow_signal_bytes_per_seed": 20450
+    },
+    {
+      "batch": 16384,
+      "cycles": 64,
+      "runs_cycle_stimuli_per_s": [
+        11907690.0,
+        12298780.0,
+        11936740.0
+      ],
+      "median_cycle_stimuli_per_s": 11936740.0,
+      "tensorlut_cycle_stimuli_per_s": 10130297.465734707,
+      "tensorlut_over_rtlflow": 0.8486653362421153,
+      "rtlflow_signal_bytes_per_seed": 20450
+    },
+    {
+      "batch": 65536,
+      "cycles": 64,
+      "runs_cycle_stimuli_per_s": [
+        11606640.0,
+        12983470.0,
+        12789450.0
+      ],
+      "median_cycle_stimuli_per_s": 12789450.0,
+      "tensorlut_cycle_stimuli_per_s": 10208102.94275292,
+      "tensorlut_over_rtlflow": 0.7981659057076669,
+      "rtlflow_signal_bytes_per_seed": 20450
+    },
+    {
+      "batch": 262144,
+      "cycles": 64,
+      "runs_cycle_stimuli_per_s": [
+        11745350.0,
+        11722210.0,
+        11698850.0
+      ],
+      "median_cycle_stimuli_per_s": 11722210.0,
+      "tensorlut_cycle_stimuli_per_s": 9518814.993664179,
+      "tensorlut_over_rtlflow": 0.812032457502824,
+      "rtlflow_signal_bytes_per_seed": 20450
+    }
+  ]
+}

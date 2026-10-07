@@ -1,0 +1,103 @@
+{
+  "command": "scripts/esop_bench.py --designs s349_bench,s1488_bench --batches 64,...,262144 --cycles 512 --runs 3 --warmup 1",
+  "results": [
+    {
+      "design": "s349_bench",
+      "batch": 64,
+      "cycles": 512,
+      "esop_cycle_stimuli_per_s": 364500.0,
+      "lut_anf_cycle_stimuli_per_s": 143000.0
+    },
+    {
+      "design": "s349_bench",
+      "batch": 256,
+      "cycles": 512,
+      "esop_cycle_stimuli_per_s": 1199000.0,
+      "lut_anf_cycle_stimuli_per_s": 539700.0
+    },
+    {
+      "design": "s349_bench",
+      "batch": 1024,
+      "cycles": 512,
+      "esop_cycle_stimuli_per_s": 4731000.0,
+      "lut_anf_cycle_stimuli_per_s": 2121000.0
+    },
+    {
+      "design": "s349_bench",
+      "batch": 4096,
+      "cycles": 512,
+      "esop_cycle_stimuli_per_s": 22420000.0,
+      "lut_anf_cycle_stimuli_per_s": 8785000.0
+    },
+    {
+      "design": "s349_bench",
+      "batch": 16384,
+      "cycles": 512,
+      "esop_cycle_stimuli_per_s": 77310000.0,
+      "lut_anf_cycle_stimuli_per_s": 34000000.0
+    },
+    {
+      "design": "s349_bench",
+      "batch": 65536,
+      "cycles": 512,
+      "esop_cycle_stimuli_per_s": 203600000.0,
+      "lut_anf_cycle_stimuli_per_s": 113700000.0
+    },
+    {
+      "design": "s349_bench",
+      "batch": 262144,
+      "cycles": 512,
+      "esop_cycle_stimuli_per_s": 309400000.0,
+      "lut_anf_cycle_stimuli_per_s": 252500000.0
+    },
+    {
+      "design": "s1488_bench",
+      "batch": 64,
+      "cycles": 512,
+      "esop_cycle_stimuli_per_s": 370700.0,
+      "lut_anf_cycle_stimuli_per_s": 121100.0
+    },
+    {
+      "design": "s1488_bench",
+      "batch": 256,
+      "cycles": 512,
+      "esop_cycle_stimuli_per_s": 1468000.0,
+      "lut_anf_cycle_stimuli_per_s": 483700.0
+    },
+    {
+      "design": "s1488_bench",
+      "batch": 1024,
+      "cycles": 512,
+      "esop_cycle_stimuli_per_s": 5820000.0,
+      "lut_anf_cycle_stimuli_per_s": 1927000.0
+    },
+    {
+      "design": "s1488_bench",
+      "batch": 4096,
+      "cycles": 512,
+      "esop_cycle_stimuli_per_s": 22340000.0,
+      "lut_anf_cycle_stimuli_per_s": 7594000.0
+    },
+    {
+      "design": "s1488_bench",
+      "batch": 16384,
+      "cycles": 512,
+      "esop_cycle_stimuli_per_s": 78460000.0,
+      "lut_anf_cycle_stimuli_per_s": 29240000.0
+    },
+    {
+      "design": "s1488_bench",
+      "batch": 65536,
+      "cycles": 512,
+      "esop_cycle_stimuli_per_s": 211400000.0,
+      "lut_anf_cycle_stimuli_per_s": 99960000.0
+    },
+    {
+      "design": "s1488_bench",
+      "batch": 262144,
+      "cycles": 512,
+      "esop_cycle_stimuli_per_s": 364200000.0,
+      "lut_anf_cycle_stimuli_per_s": 181700000.0
+    }
+  ]
+}

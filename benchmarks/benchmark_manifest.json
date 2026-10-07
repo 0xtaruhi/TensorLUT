@@ -1,0 +1,260 @@
+{
+  "measured_in_artifact": [
+    {
+      "tier": "algebraic_microbenchmarks",
+      "purpose": "Isolate the tensor-core algebraic routes used by TensorLUT.",
+      "designs": [
+        {"name": "lfsr16_free", "path": "benchmarks/lfsr16_free.v", "route": "GF2_AFFINE"},
+        {"name": "crc8_serial", "path": "benchmarks/crc8_serial.v", "route": "GF2_AFFINE"},
+        {"name": "nfsr16", "path": "benchmarks/nfsr16.v", "route": "ANF"},
+        {"name": "lfsr8", "path": "benchmarks/lfsr8.v", "route": "ANF"},
+        {"name": "counter8", "path": "benchmarks/counter8.v", "route": "LUT_TENSOR"}
+      ]
+    },
+    {
+      "tier": "iscas89_sequential",
+      "purpose": "Compiler characterization, monomial/chunk statistics, and Icarus primary-output differential tests.",
+      "designs": [
+        "s27", "s298", "s344", "s349", "s382", "s386", "s400", "s444",
+        "s510", "s526", "s641", "s713", "s820", "s832", "s953", "s1196",
+        "s1238", "s1423", "s1488", "s1494", "s5378", "s9234_1", "s13207",
+        "s15850"
+      ],
+      "differential_checked": ["s27", "s349", "s386", "s510", "s1488", "s5378"]
+    }
+  ],
+  "external_checkouts": [
+    {
+      "name": "chipyard",
+      "path": "third_party/large_rtl/chipyard",
+      "url": "https://github.com/ucb-bar/chipyard.git",
+      "commit": "0acc1e1de2d3",
+      "rtl_files": 4,
+      "status": "checked out; Chipyard meta-repository with submodules not initialized"
+    },
+    {
+      "name": "XiangShan",
+      "path": "third_party/large_rtl/XiangShan",
+      "url": "https://github.com/OpenXiangShan/XiangShan.git",
+      "commit": "60c341662cee",
+      "rtl_files": 0,
+      "status": "checked out; Chisel/Scala source, generated RTL requires XiangShan build dependencies"
+    },
+    {
+      "name": "gemmini",
+      "path": "third_party/large_rtl/gemmini",
+      "url": "https://github.com/ucb-bar/gemmini.git",
+      "commit": "8c3f9923a44a",
+      "rtl_files": 0,
+      "status": "checked out; Chisel/Chipyard generator source"
+    },
+    {
+      "name": "riscv-boom",
+      "path": "third_party/large_rtl/riscv-boom",
+      "url": "https://github.com/riscv-boom/riscv-boom.git",
+      "commit": "af3023c5ef22",
+      "rtl_files": 2,
+      "status": "checked out; BOOM generator source"
+    },
+    {
+      "name": "rocket-chip",
+      "path": "third_party/large_rtl/rocket-chip",
+      "url": "https://github.com/chipsalliance/rocket-chip.git",
+      "commit": "55bcad0f5943",
+      "rtl_files": 11,
+      "status": "checked out; Rocket generator source"
+    },
+    {
+      "name": "riscv-mini",
+      "path": "third_party/large_rtl/riscv-mini",
+      "url": "https://github.com/ucb-bar/riscv-mini.git",
+      "commit": "3eda724c437c",
+      "rtl_files": 0,
+      "status": "checked out; RV32R-style Chisel source"
+    },
+    {
+      "name": "core_jpeg",
+      "path": "third_party/large_rtl/core_jpeg",
+      "url": "https://github.com/ultraembedded/core_jpeg.git",
+      "commit": "bb03cce45d0b",
+      "rtl_files": 23,
+      "status": "checked out; direct synthesizable Verilog"
+    },
+    {
+      "name": "tvm",
+      "path": "third_party/large_rtl/tvm",
+      "url": "https://github.com/apache/tvm.git",
+      "commit": "545bd7b3c727",
+      "rtl_files": 0,
+      "status": "checked out as VTA source root; generated RTL is not present in the shallow checkout"
+    },
+    {
+      "name": "RTeAAL-Sim",
+      "path": "third_party/simulators/RTeAAL-Sim",
+      "url": "https://github.com/TAC-UCB/RTeAAL-Sim.git",
+      "commit": "a41492ee3177",
+      "rtl_files": 160,
+      "status": "checked out; includes benchmark binaries and one RocketChip Verilog/FIRRTL example"
+    },
+    {
+      "name": "parendi",
+      "path": "third_party/simulators/parendi",
+      "url": "https://github.com/epfl-vlsc/parendi.git",
+      "commit": "0f10e49e9e09",
+      "rtl_files": 1600,
+      "status": "checked out; simulator source"
+    }
+  ],
+  "large_rtl_smoke_tests": [
+    {
+      "name": "RTeAAL RocketChip OctaCore DUT",
+      "source": "third_party/simulators/RTeAAL-Sim/verilator/verilogs/freechips.rocketchip.system.OctaCoreConfig.v",
+      "top": "ExampleRocketSystem",
+      "result_json": "build/large_rtl/rteaal_rocket8_dut_raw_stat.json",
+      "command": "yosys read_verilog -sv; hierarchy -top ExampleRocketSystem; stat -json",
+      "result": {
+        "verilog_bytes": 10788860,
+        "firrtl_bytes": 63064476,
+        "verilog_lines": 222669,
+        "firrtl_lines": 783397,
+        "wires": 416538,
+        "wire_bits": 5259285,
+        "ports": 40689,
+        "port_bits": 299024,
+        "memories": 1088,
+        "memory_bits": 2251600,
+        "processes": 751,
+        "cells": 168439
+      }
+    },
+    {
+      "name": "RTeAAL RocketChip OctaCore harness",
+      "source": "third_party/simulators/RTeAAL-Sim/verilator/verilogs/freechips.rocketchip.system.OctaCoreConfig.v",
+      "top": "TestHarness",
+      "result_json": "build/large_rtl/rteaal_rocket8_raw_stat.json",
+      "command": "yosys read_verilog -sv; hierarchy -top TestHarness; stat -json",
+      "result": {
+        "verilog_bytes": 10788860,
+        "firrtl_bytes": 63064476,
+        "verilog_lines": 222669,
+        "firrtl_lines": 783397,
+        "wires": 420860,
+        "wire_bits": 5289460,
+        "ports": 41386,
+        "port_bits": 304669,
+        "memories": 1164,
+        "memory_bits": 2149769256,
+        "processes": 782,
+        "cells": 169278
+      }
+    },
+    {
+      "name": "core_jpeg",
+      "source": "third_party/large_rtl/core_jpeg/src_v/*.v",
+      "top": "jpeg_core",
+      "result_json": "build/large_rtl/core_jpeg_stat.json",
+      "command": "yosys read_verilog; hierarchy -top jpeg_core; proc; flatten; async2sync; opt; memory -nomap; opt; stat -json",
+      "result": {
+        "wires": 2559,
+        "wire_bits": 22821,
+        "ports": 17,
+        "port_bits": 132,
+        "cells": 2093,
+        "memory_cells": 18,
+        "mul_cells": 19,
+        "state_cells": 238
+      }
+    }
+  ],
+  "large_rtl_tensorlut_compile": [
+    {
+      "name": "RTeAAL Rocket core",
+      "source": "third_party/simulators/RTeAAL-Sim/verilator/verilogs/freechips.rocketchip.system.OctaCoreConfig.v",
+      "script": "python3 scripts/rocket_lut_stats.py --json",
+      "rows": [
+        {"module": "Rocket", "pi": 400, "po": 1187, "dff": 4116, "lut": 13406, "layers": 31, "mono_total": 68606, "max_mono_layer": 8030, "chunks_tau512": 150},
+        {"module": "ALU", "pi": 133, "po": 129, "dff": 0, "lut": 884, "layers": 26, "mono_total": 3996, "max_mono_layer": 491, "chunks_tau512": 26},
+        {"module": "MulDiv", "pi": 142, "po": 71, "dff": 214, "lut": 4044, "layers": 27, "mono_total": 19306, "max_mono_layer": 2353, "chunks_tau512": 52},
+        {"module": "CSRFile", "pi": 284, "po": 1127, "dff": 1148, "lut": 2692, "layers": 6, "mono_total": 12391, "max_mono_layer": 6024, "chunks_tau512": 27}
+      ]
+    }
+  ],
+  "large_rtl_targets_from_prior_work": [
+    {
+      "source": "RTeAAL Sim, ASPLOS 2026",
+      "url": "https://arxiv.org/html/2601.18140v1",
+      "designs": [
+        {"name": "RocketChip", "origin": "Chipyard", "workload": "dhrystone"},
+        {"name": "BOOM", "origin": "Chipyard", "workload": "dhrystone"},
+        {"name": "Gemmini", "origin": "Chipyard", "workload": "matrix_add-baremetal, sizes 8/16/32"},
+        {"name": "SHA3", "origin": "Chipyard", "workload": "sha3-rocc"}
+      ],
+      "scale_points": ["1-core to 24-core RocketChip"]
+    },
+    {
+      "source": "GSIM, arXiv 2025",
+      "url": "https://arxiv.org/html/2508.02236v1",
+      "designs": [
+        {"name": "Rocket", "origin": "Chisel/FIRRTL", "workload": "CoreMark"},
+        {"name": "BOOM", "origin": "Chisel/FIRRTL", "workload": "CoreMark/Linux-style processor workload"},
+        {"name": "XiangShan", "origin": "Chisel/FIRRTL", "workload": "Linux boot and SPEC CPU2006 checkpoints"}
+      ]
+    },
+    {
+      "source": "Parendi, ASPLOS 2025/arXiv 2024",
+      "url": "https://arxiv.org/pdf/2403.04714",
+      "designs": [
+        {"name": "mc", "origin": "stock-option Monte Carlo engine", "workload": "Verilog driver"},
+        {"name": "vta", "origin": "ML accelerator", "workload": "Verilog driver"},
+        {"name": "srN", "origin": "Chipyard Rocket mesh, small cores", "scale": "N=2..15"},
+        {"name": "lrN", "origin": "Chipyard Rocket mesh, large cores with FPU/VM", "scale": "N=2..10"}
+      ],
+      "scale_note": "The paper estimates sr15 and lr10 at about 20M gates, excluding SRAMs."
+    }
+  ],
+  "paper_comparators": [
+    {
+      "name": "RepCut",
+      "citation_key": "repcut",
+      "comparison_axis": "CPU-side replicated dataflow partitioning for one long RTL instance"
+    },
+    {
+      "name": "Manticore",
+      "citation_key": "manticore",
+      "comparison_axis": "225-core FPGA/DSA static BSP execution for one long RTL instance",
+      "reported_result": "475 MHz guided 15x15 FPGA implementation; faster than Verilator in 8 of 9 benchmarks",
+      "public_repo_status": "no matching public GitHub repository found by GitHub API search on 2026-07-08"
+    },
+    {
+      "name": "Parendi",
+      "citation_key": "parendi",
+      "comparison_axis": "Graphcore IPU many-core RTL simulation",
+      "reported_result": "5888 cores across 4 IPU sockets; up to 4x faster than a state-of-the-art x64 multicore system",
+      "local_checkout": "third_party/simulators/parendi"
+    },
+    {
+      "name": "RTeAAL Sim",
+      "citation_key": "rteaal",
+      "comparison_axis": "CPU sparse tensor algebra formulation for RTL simulation",
+      "reported_result": "RocketChip, BOOM, Gemmini, and SHA3 evaluation; RocketChip scale points from 1 to 24 cores",
+      "local_checkout": "third_party/simulators/RTeAAL-Sim"
+    },
+    {
+      "name": "GSIM",
+      "citation_key": "gsim",
+      "comparison_axis": "CPU generated simulator with supernode scheduling and bit-level dynamic grouping",
+      "reported_result": "19.94x Verilator on Rocket CoreMark and 7.34x on XiangShan Linux boot"
+    },
+    {
+      "name": "RTLflow/GEM",
+      "citation_key": "rtlflow,gem",
+      "comparison_axis": "GPU CUDA-core SIMT/codegen acceleration, contrasted with tensor-core Boolean GEMM"
+    }
+  ],
+  "ingest_requirements": [
+    "Flatten or lower Chisel/FIRRTL/SystemVerilog designs to synthesizable Verilog or FIRRTL accepted by the frontend.",
+    "Use a single-clock partition or split multi-clock designs into separately synchronized domains.",
+    "Black-box or model large SRAMs/ROMs at the harness boundary.",
+    "Provide a deterministic workload harness with primary-input traces or a bridge such as DMI/FESVR."
+  ]
+}

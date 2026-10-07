@@ -1,0 +1,15 @@
+# Re-synthesize the Rocket LUT/DFF netlist to GEM's aigpdk cells (run from the output directory):
+# Placeholders NETLIST_JSON and AIGPDK_NOMEM_LIB are substituted by run_rocket.sh.
+read_json NETLIST_JSON
+hierarchy -check -top Rocket
+techmap
+opt
+dfflibmap -liberty AIGPDK_NOMEM_LIB
+opt_clean -purge
+abc -liberty AIGPDK_NOMEM_LIB
+opt_clean -purge
+techmap
+abc -liberty AIGPDK_NOMEM_LIB
+opt_clean -purge
+stat
+write_verilog -noattr gatelevel.gv

@@ -1,0 +1,23 @@
+{
+  "top": "Rocket",
+  "batch": 262144,
+  "cycles": 64,
+  "host_logical_cpus": 80,
+  "tensorlut": {
+    "yosys_abc_lut6_s": 46.29103157669306,
+    "parse_netlist_s": 0.36478159576654434,
+    "build_plan_s": 0.05372781865298748,
+    "anf_tensor_build_s": 6.53,
+    "cuda_graph_capture_s": 2.0280688144266605,
+    "stimulus_upload_s": 136.74204183928668,
+    "n_lut": 13241,
+    "n_dff": 4116,
+    "layers": 32,
+    "stimulus_upload_s_note": "host-side numpy packing of a 6.7GB uint8 stimulus array; dominated by paging on a memory-loaded host; on-device generation is used for timing (rocket_ondevice_stimulus.json)",
+    "anf_tensor_build_note": "re-timed (3 runs: 6.65, 6.47, 6.48 s) after the multi-tile front-bypass packing was added"
+  },
+  "verilator": {
+    "lut_json_to_verilog_s": 1.2186762932687998,
+    "verilator_build_O3_s": 206.88304316625
+  }
+}

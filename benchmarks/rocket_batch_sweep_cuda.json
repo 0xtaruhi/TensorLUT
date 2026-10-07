@@ -1,0 +1,419 @@
+{
+  "top": "Rocket",
+  "mode": "LUT_TENSOR",
+  "n_state": 4116,
+  "n_input": 400,
+  "n_output_bits": 1187,
+  "n_lut": 13406,
+  "cycles": 64,
+  "runs": 3,
+  "warmup": 1,
+  "results": [
+    {
+      "backend": "cuda_lutreplay",
+      "batch": 64,
+      "cycles": 64,
+      "build_s": 0.7441475130617619,
+      "runs": [
+        {
+          "run": 1,
+          "wall_s": 0.003775130957365036
+        },
+        {
+          "run": 2,
+          "wall_s": 0.003774210810661316
+        },
+        {
+          "run": 3,
+          "wall_s": 0.003775211051106453
+        }
+      ],
+      "wall_s_mean": 0.003774850939710935,
+      "wall_s_stdev": 5.558126050911143e-07,
+      "cycle_stimuli_per_s_mean": 1085075.9580757532,
+      "po_mismatches_vs_gather": null,
+      "cuda_graph": true,
+      "resident_input": true,
+      "capture_po": false,
+      "uses_tensor_cores": false,
+      "cuda_memory_allocated_gb": 0.005257728
+    },
+    {
+      "backend": "cuda_lutreplay",
+      "batch": 128,
+      "cycles": 64,
+      "build_s": 0.6084523666650057,
+      "runs": [
+        {
+          "run": 1,
+          "wall_s": 0.0047396644949913025
+        },
+        {
+          "run": 2,
+          "wall_s": 0.0047430433332920074
+        },
+        {
+          "run": 3,
+          "wall_s": 0.004739666357636452
+        }
+      ],
+      "wall_s_mean": 0.004740791395306587,
+      "wall_s_stdev": 1.9502357254946442e-06,
+      "cycle_stimuli_per_s_mean": 1727981.5366080294,
+      "po_mismatches_vs_gather": null,
+      "cuda_graph": true,
+      "resident_input": true,
+      "capture_po": false,
+      "uses_tensor_cores": false,
+      "cuda_memory_allocated_gb": 0.010287104
+    },
+    {
+      "backend": "cuda_lutreplay",
+      "batch": 256,
+      "cycles": 64,
+      "build_s": 0.6009590327739716,
+      "runs": [
+        {
+          "run": 1,
+          "wall_s": 0.0061311423778533936
+        },
+        {
+          "run": 2,
+          "wall_s": 0.006129296496510506
+        },
+        {
+          "run": 3,
+          "wall_s": 0.006127377972006798
+        }
+      ],
+      "wall_s_mean": 0.006129272282123566,
+      "wall_s_stdev": 1.8823197382145928e-06,
+      "cycle_stimuli_per_s_mean": 2673074.2649147823,
+      "po_mismatches_vs_gather": null,
+      "cuda_graph": true,
+      "resident_input": true,
+      "capture_po": false,
+      "uses_tensor_cores": false,
+      "cuda_memory_allocated_gb": 0.02026496
+    },
+    {
+      "backend": "cuda_lutreplay",
+      "batch": 512,
+      "cycles": 64,
+      "build_s": 0.6207661759108305,
+      "runs": [
+        {
+          "run": 1,
+          "wall_s": 0.00849100947380066
+        },
+        {
+          "run": 2,
+          "wall_s": 0.008486544713377953
+        },
+        {
+          "run": 3,
+          "wall_s": 0.008485712110996246
+        }
+      ],
+      "wall_s_mean": 0.008487755432724953,
+      "wall_s_stdev": 2.8486653319220344e-06,
+      "cycle_stimuli_per_s_mean": 3860620.1910179206,
+      "po_mismatches_vs_gather": null,
+      "cuda_graph": true,
+      "resident_input": true,
+      "capture_po": false,
+      "uses_tensor_cores": false,
+      "cuda_memory_allocated_gb": 0.039541248
+    },
+    {
+      "backend": "cuda_lutreplay",
+      "batch": 1024,
+      "cycles": 64,
+      "build_s": 0.6156626027077436,
+      "runs": [
+        {
+          "run": 1,
+          "wall_s": 0.01330258883535862
+        },
+        {
+          "run": 2,
+          "wall_s": 0.013300877064466476
+        },
+        {
+          "run": 3,
+          "wall_s": 0.013305336236953735
+        }
+      ],
+      "wall_s_mean": 0.013302934045592943,
+      "wall_s_stdev": 2.249540485786664e-06,
+      "cycle_stimuli_per_s_mean": 4926432.001796707,
+      "po_mismatches_vs_gather": null,
+      "cuda_graph": true,
+      "resident_input": true,
+      "capture_po": false,
+      "uses_tensor_cores": false,
+      "cuda_memory_allocated_gb": 0.080282112
+    },
+    {
+      "backend": "cuda_lutreplay",
+      "batch": 2048,
+      "cycles": 64,
+      "build_s": 0.631615100428462,
+      "runs": [
+        {
+          "run": 1,
+          "wall_s": 0.022535309195518494
+        },
+        {
+          "run": 2,
+          "wall_s": 0.022537199780344963
+        },
+        {
+          "run": 3,
+          "wall_s": 0.022532310336828232
+        }
+      ],
+      "wall_s_mean": 0.02253493977089723,
+      "wall_s_stdev": 2.465566950809379e-06,
+      "cycle_stimuli_per_s_mean": 5816390.07392747,
+      "po_mismatches_vs_gather": null,
+      "cuda_graph": true,
+      "resident_input": true,
+      "capture_po": false,
+      "uses_tensor_cores": false,
+      "cuda_memory_allocated_gb": 0.156568064
+    },
+    {
+      "backend": "cuda_lutreplay",
+      "batch": 4096,
+      "cycles": 64,
+      "build_s": 0.7111199125647545,
+      "runs": [
+        {
+          "run": 1,
+          "wall_s": 0.044230867177248
+        },
+        {
+          "run": 2,
+          "wall_s": 0.04189841076731682
+        },
+        {
+          "run": 3,
+          "wall_s": 0.041896918788552284
+        }
+      ],
+      "wall_s_mean": 0.04267539891103903,
+      "wall_s_stdev": 0.0013470752398761937,
+      "cycle_stimuli_per_s_mean": 6142742.81410853,
+      "po_mismatches_vs_gather": null,
+      "cuda_graph": true,
+      "resident_input": true,
+      "capture_po": false,
+      "uses_tensor_cores": false,
+      "cuda_memory_allocated_gb": 0.309737984
+    },
+    {
+      "backend": "cuda_lutreplay",
+      "batch": 8192,
+      "cycles": 64,
+      "build_s": 0.9554493930190802,
+      "runs": [
+        {
+          "run": 1,
+          "wall_s": 0.17841177619993687
+        },
+        {
+          "run": 2,
+          "wall_s": 0.17793603613972664
+        },
+        {
+          "run": 3,
+          "wall_s": 0.17797263711690903
+        }
+      ],
+      "wall_s_mean": 0.17810681648552418,
+      "wall_s_stdev": 0.0002647361487286505,
+      "cycle_stimuli_per_s_mean": 2943671.7265821886,
+      "po_mismatches_vs_gather": null,
+      "cuda_graph": true,
+      "resident_input": true,
+      "capture_po": false,
+      "uses_tensor_cores": false,
+      "cuda_memory_allocated_gb": 0.617411072
+    },
+    {
+      "backend": "cuda_lutreplay",
+      "batch": 16384,
+      "cycles": 64,
+      "build_s": 1.501977102831006,
+      "runs": [
+        {
+          "run": 1,
+          "wall_s": 0.42590100318193436
+        },
+        {
+          "run": 2,
+          "wall_s": 0.42581113427877426
+        },
+        {
+          "run": 3,
+          "wall_s": 0.42593309469521046
+        }
+      ],
+      "wall_s_mean": 0.42588174405197304,
+      "wall_s_stdev": 6.322002340614204e-05,
+      "cycle_stimuli_per_s_mean": 2462129.4869874385,
+      "po_mismatches_vs_gather": null,
+      "cuda_graph": true,
+      "resident_input": true,
+      "capture_po": false,
+      "uses_tensor_cores": false,
+      "cuda_memory_allocated_gb": 1.234252288
+    },
+    {
+      "backend": "cuda_lutreplay",
+      "batch": 32768,
+      "cycles": 64,
+      "build_s": 2.286943195387721,
+      "runs": [
+        {
+          "run": 1,
+          "wall_s": 0.691843070089817
+        },
+        {
+          "run": 2,
+          "wall_s": 0.6915836073458195
+        },
+        {
+          "run": 3,
+          "wall_s": 0.6916827075183392
+        }
+      ],
+      "wall_s_mean": 0.6917031283179919,
+      "wall_s_stdev": 0.0001309312249791107,
+      "cycle_stimuli_per_s_mean": 3031867.1611325876,
+      "po_mismatches_vs_gather": null,
+      "cuda_graph": true,
+      "resident_input": true,
+      "capture_po": false,
+      "uses_tensor_cores": false,
+      "cuda_memory_allocated_gb": 2.46793472
+    },
+    {
+      "backend": "cuda_lutreplay",
+      "batch": 65536,
+      "cycles": 64,
+      "build_s": 3.6181932613253593,
+      "runs": [
+        {
+          "run": 1,
+          "wall_s": 1.046395968645811
+        },
+        {
+          "run": 2,
+          "wall_s": 1.0468493588268757
+        },
+        {
+          "run": 3,
+          "wall_s": 1.0468999724835157
+        }
+      ],
+      "wall_s_mean": 1.046715099985401,
+      "wall_s_stdev": 0.0002775320602937304,
+      "cycle_stimuli_per_s_mean": 4007111.3907294357,
+      "po_mismatches_vs_gather": null,
+      "cuda_graph": true,
+      "resident_input": true,
+      "capture_po": false,
+      "uses_tensor_cores": false,
+      "cuda_memory_allocated_gb": 4.935299584
+    },
+    {
+      "backend": "cuda_lutreplay",
+      "batch": 131072,
+      "cycles": 64,
+      "build_s": 5.664372680708766,
+      "runs": [
+        {
+          "run": 1,
+          "wall_s": 1.63448216766119
+        },
+        {
+          "run": 2,
+          "wall_s": 1.634426649659872
+        },
+        {
+          "run": 3,
+          "wall_s": 1.6350899264216423
+        }
+      ],
+      "wall_s_mean": 1.6346662479142349,
+      "wall_s_stdev": 0.0003679649036890272,
+      "cycle_stimuli_per_s_mean": 5131694.626168191,
+      "po_mismatches_vs_gather": null,
+      "cuda_graph": true,
+      "resident_input": true,
+      "capture_po": false,
+      "uses_tensor_cores": false,
+      "cuda_memory_allocated_gb": 9.870029312
+    },
+    {
+      "backend": "cuda_lutreplay",
+      "batch": 262144,
+      "cycles": 64,
+      "build_s": 8.503448715433478,
+      "runs": [
+        {
+          "run": 1,
+          "wall_s": 2.4456493593752384
+        },
+        {
+          "run": 2,
+          "wall_s": 2.4446080569177866
+        },
+        {
+          "run": 3,
+          "wall_s": 2.4452093578875065
+        }
+      ],
+      "wall_s_mean": 2.4451555913935104,
+      "wall_s_stdev": 0.0005227292118116848,
+      "cycle_stimuli_per_s_mean": 6861410.39819824,
+      "po_mismatches_vs_gather": null,
+      "cuda_graph": true,
+      "resident_input": true,
+      "capture_po": false,
+      "uses_tensor_cores": false,
+      "cuda_memory_allocated_gb": 19.740537344
+    },
+    {
+      "backend": "cuda_lutreplay",
+      "batch": 524288,
+      "cycles": 64,
+      "build_s": 15.031934114173055,
+      "runs": [
+        {
+          "run": 1,
+          "wall_s": 2.6489679105579853
+        },
+        {
+          "run": 2,
+          "wall_s": 2.6498327497392893
+        },
+        {
+          "run": 3,
+          "wall_s": 2.6507931128144264
+        }
+      ],
+      "wall_s_mean": 2.649864591037234,
+      "wall_s_stdev": 0.000913017645185745,
+      "cycle_stimuli_per_s_mean": 12662696.846281426,
+      "po_mismatches_vs_gather": null,
+      "cuda_graph": true,
+      "resident_input": true,
+      "capture_po": false,
+      "uses_tensor_cores": false,
+      "cuda_memory_allocated_gb": 39.47840768
+    }
+  ]
+}

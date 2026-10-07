@@ -1,0 +1,22 @@
+{
+  "simulator": "GEM (github.com/NVlabs/GEM), sm_89, CUDA 13.3",
+  "netlist": "Rocket LUT/DFF netlist re-synthesized to aigpdk cells (61,624 cells, 4,116 DFFs); equivalent to the original (0/60,768 PO-bit mismatches, B=8, C=64)",
+  "compile_s": {
+    "yosys_aigpdk": 33,
+    "cut_map_interactive": 94
+  },
+  "cycles": 20001,
+  "sim_elapsed_ms": [
+    296.7,
+    286.7,
+    286.9
+  ],
+  "cycles_per_s_single_stimulus": 68945.19131334024,
+  "two_concurrent_instances_ms": [
+    512.7,
+    524.4
+  ],
+  "validation": "PASS: 199 cycles, 72,499 output bits, 0 mismatches vs the LUT/DFF netlist (scripts/gem/check_gem_rocket.py). GEM stamps the outputs of edge c+1 at time 2c+1; its GPU and CPU (--check-with-cpu) results also agree.",
+  "input_vcd": "scripts/gem/make_random_vcd.py, vector ports with zero-padded values (GEM does not left-extend short vector values)",
+  "earlier_mismatch_cause": "our first VCD wrote vector values without leading zeros; GEM maps characters MSB-first without left-extension"
+}

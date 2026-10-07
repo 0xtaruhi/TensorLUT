@@ -1,0 +1,20 @@
+[
+  {
+    "batch": 1024,
+    "cycles": 64,
+    "replay_cycle_stimuli_per_s": 3078115.711363705,
+    "gen+replay_cycle_stimuli_per_s": 3257156.0341419363
+  },
+  {
+    "batch": 16384,
+    "cycles": 64,
+    "replay_cycle_stimuli_per_s": 10245146.016506765,
+    "gen+replay_cycle_stimuli_per_s": 10237338.48565123
+  },
+  {
+    "batch": 262144,
+    "cycles": 64,
+    "replay_cycle_stimuli_per_s": 9565948.57223551,
+    "gen+replay_cycle_stimuli_per_s": 9557398.239588123
+  }
+]

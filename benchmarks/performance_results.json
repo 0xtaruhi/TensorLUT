@@ -1,0 +1,742 @@
+{
+  "note": "Rocket fast-path, CUDA-baseline and strict-comparison Rocket entries below predate the final multi-tile layer kernel; the paper's Rocket numbers come from the camera-ready files listed in benchmarks/README.md (e.g. rocket_batch_sweep_b1.json).",
+  "measured_at": "2026-07-08",
+  "gpu": "NVIDIA RTX 4090",
+  "tensorlut_backend": "portable GEMM/ANF tensor-core path",
+  "microbench_command": "CUDA_VISIBLE_DEVICES=2 PYTHONPATH=. .venv/bin/python scripts/bench.py --cycles 512 --runs 5 --cpu-batch 256 --backend gemm",
+  "verilator_microbench_command": "bash scripts/bench_verilator.sh 65536 512",
+  "esop_command": "CUDA_VISIBLE_DEVICES=2 PYTHONPATH=. .venv/bin/python scripts/esop_bench.py --batches 65536,262144 --cycles 512 --runs 3 --warmup 1",
+  "verilator_iscas_command": "PYTHONPATH=. .venv/bin/python scripts/bench_verilator_iscas.py s349 s1488 s5378 s13207 s15850 --batch 4096 --cycles 256 --reset-cycles 2",
+  "tensorlut_microbench": [
+    {
+      "workload": "lfsr16_free",
+      "path": "GF2_AFFINE",
+      "batch": 65536,
+      "cycle_stimuli_per_s": 2448000000.0,
+      "per_seed_hz": 37353.5
+    },
+    {
+      "workload": "crc8_serial",
+      "path": "GF2_AFFINE",
+      "batch": 65536,
+      "cycle_stimuli_per_s": 2566000000.0,
+      "per_seed_hz": 39154.1
+    },
+    {
+      "workload": "nfsr16",
+      "path": "ANF",
+      "batch": 65536,
+      "cycle_stimuli_per_s": 1055000000.0,
+      "per_seed_hz": 16098.0
+    },
+    {
+      "workload": "lfsr8",
+      "path": "ANF",
+      "batch": 65536,
+      "cycle_stimuli_per_s": 963700000.0,
+      "per_seed_hz": 14704.9
+    },
+    {
+      "workload": "counter8",
+      "path": "LUT_TENSOR",
+      "batch": 65536,
+      "cycle_stimuli_per_s": 494600000.0,
+      "per_seed_hz": 7547.0
+    },
+    {
+      "workload": "lfsr16_free",
+      "path": "GF2_AFFINE",
+      "batch": 262144,
+      "cycle_stimuli_per_s": 2669000000.0,
+      "per_seed_hz": 10181.4
+    },
+    {
+      "workload": "crc8_serial",
+      "path": "GF2_AFFINE",
+      "batch": 262144,
+      "cycle_stimuli_per_s": 2940000000.0,
+      "per_seed_hz": 11215.2
+    },
+    {
+      "workload": "nfsr16",
+      "path": "ANF",
+      "batch": 262144,
+      "cycle_stimuli_per_s": 1289000000.0,
+      "per_seed_hz": 4917.1
+    },
+    {
+      "workload": "lfsr8",
+      "path": "ANF",
+      "batch": 262144,
+      "cycle_stimuli_per_s": 1129000000.0,
+      "per_seed_hz": 4306.8
+    },
+    {
+      "workload": "counter8",
+      "path": "LUT_TENSOR",
+      "batch": 262144,
+      "cycle_stimuli_per_s": 621700000.0,
+      "per_seed_hz": 2371.6
+    },
+    {
+      "workload": "lfsr16_free",
+      "path": "GF2_AFFINE",
+      "batch": 1048576,
+      "cycle_stimuli_per_s": 2747000000.0,
+      "per_seed_hz": 2619.7
+    },
+    {
+      "workload": "crc8_serial",
+      "path": "GF2_AFFINE",
+      "batch": 1048576,
+      "cycle_stimuli_per_s": 2993000000.0,
+      "per_seed_hz": 2854.3
+    },
+    {
+      "workload": "nfsr16",
+      "path": "ANF",
+      "batch": 1048576,
+      "cycle_stimuli_per_s": 1060000000.0,
+      "per_seed_hz": 1010.9
+    },
+    {
+      "workload": "lfsr8",
+      "path": "ANF",
+      "batch": 1048576,
+      "cycle_stimuli_per_s": 969100000.0,
+      "per_seed_hz": 924.2
+    },
+    {
+      "workload": "counter8",
+      "path": "LUT_TENSOR",
+      "batch": 1048576,
+      "cycle_stimuli_per_s": 612800000.0,
+      "per_seed_hz": 584.4
+    }
+  ],
+  "verilator_microbench": [
+    {
+      "workload": "lfsr16_free",
+      "cycle_stimuli_per_s": 8585000.0
+    },
+    {
+      "workload": "counter8",
+      "cycle_stimuli_per_s": 8603000.0
+    }
+  ],
+  "esop_vs_lut_anf": [
+    {
+      "workload": "nfsr16",
+      "batch": 65536,
+      "esop_cycle_stimuli_per_s": 227800000.0,
+      "lut_anf_cycle_stimuli_per_s": 305300000.0,
+      "speedup": 0.75
+    },
+    {
+      "workload": "nfsr16",
+      "batch": 262144,
+      "esop_cycle_stimuli_per_s": 794700000.0,
+      "lut_anf_cycle_stimuli_per_s": 1219000000.0,
+      "speedup": 0.65
+    },
+    {
+      "workload": "s349_bench",
+      "batch": 65536,
+      "esop_cycle_stimuli_per_s": 211600000.0,
+      "lut_anf_cycle_stimuli_per_s": 121900000.0,
+      "speedup": 1.73
+    },
+    {
+      "workload": "s349_bench",
+      "batch": 262144,
+      "esop_cycle_stimuli_per_s": 346800000.0,
+      "lut_anf_cycle_stimuli_per_s": 240800000.0,
+      "speedup": 1.44
+    },
+    {
+      "workload": "s386_bench",
+      "batch": 65536,
+      "esop_cycle_stimuli_per_s": 233300000.0,
+      "lut_anf_cycle_stimuli_per_s": 129100000.0,
+      "speedup": 1.81
+    },
+    {
+      "workload": "s386_bench",
+      "batch": 262144,
+      "esop_cycle_stimuli_per_s": 402800000.0,
+      "lut_anf_cycle_stimuli_per_s": 284800000.0,
+      "speedup": 1.41
+    },
+    {
+      "workload": "s510_bench",
+      "batch": 65536,
+      "esop_cycle_stimuli_per_s": 147700000.0,
+      "lut_anf_cycle_stimuli_per_s": 97360000.0,
+      "speedup": 1.52
+    },
+    {
+      "workload": "s510_bench",
+      "batch": 262144,
+      "esop_cycle_stimuli_per_s": 201400000.0,
+      "lut_anf_cycle_stimuli_per_s": 165600000.0,
+      "speedup": 1.22
+    },
+    {
+      "workload": "s1488_bench",
+      "batch": 65536,
+      "esop_cycle_stimuli_per_s": 223900000.0,
+      "lut_anf_cycle_stimuli_per_s": 109500000.0,
+      "speedup": 2.05
+    },
+    {
+      "workload": "s1488_bench",
+      "batch": 262144,
+      "esop_cycle_stimuli_per_s": 345600000.0,
+      "lut_anf_cycle_stimuli_per_s": 161300000.0,
+      "speedup": 2.14
+    }
+  ],
+  "verilator_iscas": [
+    {
+      "workload": "s349_bench",
+      "cycle_stimuli_per_s": 4828000.0
+    },
+    {
+      "workload": "s1488_bench",
+      "cycle_stimuli_per_s": 2369000.0
+    },
+    {
+      "workload": "s5378_bench",
+      "cycle_stimuli_per_s": 1137000.0
+    },
+    {
+      "workload": "s13207_bench",
+      "cycle_stimuli_per_s": 790000.0
+    },
+    {
+      "workload": "s15850_bench",
+      "cycle_stimuli_per_s": 720300.0
+    }
+  ],
+  "strict_same_machine_comparisons": [
+    {
+      "workload": "lfsr16_free",
+      "batch": 65536,
+      "tensorlut_cycle_stimuli_per_s": 2448000000.0,
+      "verilator_cycle_stimuli_per_s": 8585000.0,
+      "speedup_vs_1_process": 285.1,
+      "speedup_vs_80_process_ideal": 3.56
+    },
+    {
+      "workload": "counter8",
+      "batch": 65536,
+      "tensorlut_cycle_stimuli_per_s": 494600000.0,
+      "verilator_cycle_stimuli_per_s": 8603000.0,
+      "speedup_vs_1_process": 57.5,
+      "speedup_vs_80_process_ideal": 0.72
+    },
+    {
+      "workload": "s349_bench",
+      "batch": 262144,
+      "tensorlut_esop_cycle_stimuli_per_s": 346800000.0,
+      "verilator_cycle_stimuli_per_s": 4828000.0,
+      "speedup_vs_1_process": 71.8,
+      "speedup_vs_80_process_ideal": 0.9
+    },
+    {
+      "workload": "s1488_bench",
+      "batch": 262144,
+      "tensorlut_esop_cycle_stimuli_per_s": 345600000.0,
+      "verilator_cycle_stimuli_per_s": 2369000.0,
+      "speedup_vs_1_process": 145.9,
+      "speedup_vs_80_process_ideal": 1.82
+    },
+    {
+      "workload": "rocket_core_fastpath",
+      "batch": 262144,
+      "tensorlut_cycle_stimuli_per_s": 8094000.0,
+      "verilator_1_process_cycle_stimuli_per_s": 39350.0,
+      "verilator_64_process_cycle_stimuli_per_s": 1291000.0,
+      "verilator_80_process_cycle_stimuli_per_s": 1351000.0,
+      "speedup_vs_1_process": 205.7,
+      "speedup_vs_64_process": 6.27,
+      "speedup_vs_80_process": 5.99
+    }
+  ],
+  "prior_work_reported_results": [
+    {
+      "work": "RTeAAL Sim",
+      "source": "https://arxiv.org/html/2601.18140",
+      "reported_axis": "CPU sparse tensor algebra for RTL simulation",
+      "benchmarks": [
+        "RocketChip 1-to-24 cores",
+        "SmallBOOM",
+        "Gemmini",
+        "SHA3"
+      ],
+      "reported_result": "Performance comparable to Verilator across the evaluated hosts and designs"
+    },
+    {
+      "work": "GSIM",
+      "source": "https://arxiv.org/abs/2508.02236",
+      "reported_axis": "Generated CPU simulator with supernode and bit-level scheduling",
+      "benchmarks": [
+        "Rocket CoreMark",
+        "XiangShan Linux boot"
+      ],
+      "reported_result": "19.94x speedup over Verilator on Rocket CoreMark; 7.34x on XiangShan Linux boot"
+    },
+    {
+      "work": "Manticore",
+      "source": "https://arxiv.org/pdf/2301.09413",
+      "reported_axis": "225-core FPGA static-BSP RTL simulator at 475 MHz",
+      "benchmarks": [
+        "nine RTL benchmarks"
+      ],
+      "reported_result": "Outperforms Verilator on desktop/server hosts in 8 of 9 benchmarks"
+    },
+    {
+      "work": "Parendi",
+      "source": "https://arxiv.org/abs/2403.04714",
+      "reported_axis": "Graphcore IPU RTL simulator",
+      "benchmarks": [
+        "mc",
+        "vta",
+        "srN",
+        "lrN"
+      ],
+      "reported_result": "Runs large RTL designs up to 4x faster than state-of-the-art x64 multicore systems using 5888 cores on 4 IPU sockets"
+    },
+    {
+      "work": "TensorLUT",
+      "source": "this artifact",
+      "reported_axis": "NVIDIA tensor-core ANF/LUT binary GEMM over the regression batch dimension",
+      "benchmarks": [
+        "Rocket core",
+        "ISCAS'89",
+        "GF(2)/ANF microbenchmarks"
+      ],
+      "reported_result": "8.17e6 cycle-stimuli/s on the RTeAAL Rocket core batched random-input workload; 8.05e6 with every-cycle primary-output capture; 5.99x over an 80-process Verilator server baseline and 1.18x over a no-tensor-core CUDA LUT baseline at batch 262144; zero state/PO mismatches in the Rocket backend differential; 2.99e9 peak on CRC8"
+    }
+  ],
+  "large_rtl_tensorlut_compile_command": "python3 scripts/rocket_lut_stats.py --json",
+  "large_rtl_tensorlut_compile": [
+    {
+      "module": "Rocket",
+      "source": "RTeAAL-Sim OctaCoreConfig.v",
+      "pi": 400,
+      "po": 1187,
+      "dff": 4116,
+      "lut": 13406,
+      "layers": 31,
+      "mono_total": 68606,
+      "max_mono_layer": 8030,
+      "max_degree": 6,
+      "chunks_tau512": 150,
+      "chunked_layers": 20,
+      "term_reuse": 1.22
+    },
+    {
+      "module": "ALU",
+      "source": "RTeAAL-Sim OctaCoreConfig.v",
+      "pi": 133,
+      "po": 129,
+      "dff": 0,
+      "lut": 884,
+      "layers": 26,
+      "mono_total": 3996,
+      "max_mono_layer": 491,
+      "max_degree": 6,
+      "chunks_tau512": 26,
+      "chunked_layers": 0,
+      "term_reuse": 1.35
+    },
+    {
+      "module": "MulDiv",
+      "source": "RTeAAL-Sim OctaCoreConfig.v",
+      "pi": 142,
+      "po": 71,
+      "dff": 214,
+      "lut": 4044,
+      "layers": 27,
+      "mono_total": 19306,
+      "max_mono_layer": 2353,
+      "max_degree": 6,
+      "chunks_tau512": 52,
+      "chunked_layers": 13,
+      "term_reuse": 1.33
+    },
+    {
+      "module": "CSRFile",
+      "source": "RTeAAL-Sim OctaCoreConfig.v",
+      "pi": 284,
+      "po": 1127,
+      "dff": 1148,
+      "lut": 2692,
+      "layers": 6,
+      "mono_total": 12391,
+      "max_mono_layer": 6024,
+      "max_degree": 6,
+      "chunks_tau512": 27,
+      "chunked_layers": 5,
+      "term_reuse": 1.18
+    }
+  ],
+  "large_rtl_rocket_core_backend_check_command": "CUDA_VISIBLE_DEVICES=2 PYTHONPATH=. .venv/bin/python scripts/check_rocket_core.py --batch 8 --cycles 8 --device cuda --json",
+  "large_rtl_rocket_core_backend_check": {
+    "top": "Rocket",
+    "batch": 8,
+    "cycles": 8,
+    "seed": 20260708,
+    "mode": "LUT_TENSOR",
+    "n_state": 4116,
+    "n_input": 400,
+    "n_output_bits": 1187,
+    "n_lut": 13406,
+    "cpu_reference_s": 4.112,
+    "tensor_core_s": 14.815,
+    "gather_s": 1.216,
+    "state_mismatches_tensor_core_vs_cpu": 0,
+    "po_mismatches_tensor_core_vs_cpu": 0,
+    "state_mismatches_gather_vs_cpu": 0,
+    "po_mismatches_gather_vs_cpu": 0,
+    "state_mismatches_tensor_core_vs_gather": 0,
+    "po_mismatches_tensor_core_vs_gather": 0,
+    "passed": true
+  },
+  "large_rtl_rocket_core_backend_check_long_command": "CUDA_VISIBLE_DEVICES=2 PYTHONPATH=. .venv/bin/python scripts/check_rocket_core.py --batch 8 --cycles 256 --device cuda --json",
+  "large_rtl_rocket_core_backend_check_long": {
+    "top": "Rocket",
+    "batch": 8,
+    "cycles": 256,
+    "seed": 20260708,
+    "mode": "LUT_TENSOR",
+    "n_state": 4116,
+    "n_input": 400,
+    "n_output_bits": 1187,
+    "n_lut": 13406,
+    "cpu_reference_s": 122.295,
+    "tensor_core_s": 13.902,
+    "gather_s": 6.026,
+    "state_mismatches_tensor_core_vs_cpu": 0,
+    "po_mismatches_tensor_core_vs_cpu": 0,
+    "state_mismatches_gather_vs_cpu": 0,
+    "po_mismatches_gather_vs_cpu": 0,
+    "state_mismatches_tensor_core_vs_gather": 0,
+    "po_mismatches_tensor_core_vs_gather": 0,
+    "passed": true
+  },
+  "large_rtl_rocket_core_backend_check_gpu_batch_command": "CUDA_VISIBLE_DEVICES=2 PYTHONPATH=. .venv/bin/python scripts/check_rocket_core.py --batch 4096 --cycles 256 --device cuda --skip-cpu --json",
+  "large_rtl_rocket_core_backend_check_gpu_batch": {
+    "top": "Rocket",
+    "batch": 4096,
+    "cycles": 256,
+    "seed": 20260708,
+    "mode": "LUT_TENSOR",
+    "n_state": 4116,
+    "n_input": 400,
+    "n_output_bits": 1187,
+    "n_lut": 13406,
+    "cycle_stimuli_checked": 1048576,
+    "cpu_reference_s": null,
+    "tensor_core_s": 16.025,
+    "gather_s": 6.288,
+    "state_mismatches_tensor_core_vs_gather": 0,
+    "po_mismatches_tensor_core_vs_gather": 0,
+    "passed": true
+  },
+  "large_rtl_rocket_core_gpu_command": "CUDA_VISIBLE_DEVICES=2 PYTHONPATH=. .venv/bin/python scripts/bench_rocket_core.py --batches 4096,16384,65536,131072 --cycles 8 --runs 3",
+  "large_rtl_rocket_core_gpu": [
+    {
+      "batch": 4096,
+      "cycles": 8,
+      "cycle_stimuli_per_s_mean": 181600.0,
+      "cycle_stimuli_per_s_stdev": 21930.0,
+      "per_seed_hz_mean": 44.34,
+      "build_s": 11.039,
+      "cuda_memory_allocated": 889378816,
+      "cuda_memory_allocated_gb": 0.889
+    },
+    {
+      "batch": 16384,
+      "cycles": 8,
+      "cycle_stimuli_per_s_mean": 188100.0,
+      "cycle_stimuli_per_s_stdev": 565.5,
+      "per_seed_hz_mean": 11.48,
+      "build_s": 11.432,
+      "cuda_memory_allocated": 2915508736,
+      "cuda_memory_allocated_gb": 2.916
+    },
+    {
+      "batch": 65536,
+      "cycles": 8,
+      "cycle_stimuli_per_s_mean": 185000.0,
+      "cycle_stimuli_per_s_stdev": 98.56,
+      "per_seed_hz_mean": 2.82,
+      "build_s": 13.537,
+      "cuda_memory_allocated": 9898795520,
+      "cuda_memory_allocated_gb": 9.899
+    },
+    {
+      "batch": 131072,
+      "cycles": 8,
+      "cycle_stimuli_per_s_mean": 184900.0,
+      "cycle_stimuli_per_s_stdev": 28.3,
+      "per_seed_hz_mean": 1.41,
+      "build_s": 16.644,
+      "cuda_memory_allocated": 18863110656,
+      "cuda_memory_allocated_gb": 18.863
+    }
+  ],
+  "large_rtl_rocket_core_gpu_cycles64_command": "CUDA_VISIBLE_DEVICES=2 PYTHONPATH=. .venv/bin/python scripts/bench_rocket_core.py --batches 4096,16384,65536 --cycles 64 --runs 3",
+  "large_rtl_rocket_core_gpu_cycles64": [
+    {
+      "batch": 4096,
+      "cycles": 64,
+      "cycle_stimuli_per_s_mean": 194800.0,
+      "cycle_stimuli_per_s_stdev": 3074.0,
+      "per_seed_hz_mean": 47.55,
+      "build_s": 13.13,
+      "cuda_memory_allocated": 2197190144,
+      "cuda_memory_allocated_gb": 2.197,
+      "memory_per_seed_mib": 0.512
+    },
+    {
+      "batch": 16384,
+      "cycles": 64,
+      "cycle_stimuli_per_s_mean": 195200.0,
+      "cycle_stimuli_per_s_stdev": 89.75,
+      "per_seed_hz_mean": 11.92,
+      "build_s": 16.888,
+      "cuda_memory_allocated": 8149978112,
+      "cuda_memory_allocated_gb": 8.15,
+      "memory_per_seed_mib": 0.474
+    },
+    {
+      "batch": 65536,
+      "cycles": 64,
+      "cycle_stimuli_per_s_mean": 191000.0,
+      "cycle_stimuli_per_s_stdev": 180.1,
+      "per_seed_hz_mean": 2.91,
+      "build_s": 33.55,
+      "cuda_memory_allocated": 30829267968,
+      "cuda_memory_allocated_gb": 30.829,
+      "memory_per_seed_mib": 0.449
+    }
+  ],
+  "large_rtl_rocket_core_fastpath_command": "CUDA_VISIBLE_DEVICES=1 RTLGEMM_B1_LAYER_WPB=8 ./.venv/bin/python scripts/bench_rocket_backends.py --json-netlist build/large_rtl/rocket_Rocket_lut.json --backends b1_layerreplayv824 --batches 262144,524288 --cycles 64 --runs 3-5 --warmup 1 --skip-reference --json",
+  "large_rtl_rocket_core_fastpath": [
+    {
+      "backend": "b1_layerreplayv824",
+      "batch": 262144,
+      "cycles": 64,
+      "capture_po": false,
+      "cycle_stimuli_per_s_mean": 8093894.0,
+      "wall_s_mean": 2.072824,
+      "runs": 5,
+      "cuda_graph": true,
+      "resident_input": true,
+      "cuda_memory_allocated_gb": 2.402
+    },
+    {
+      "backend": "b1_layerreplayv824",
+      "batch": 262144,
+      "cycles": 64,
+      "capture_po": true,
+      "cycle_stimuli_per_s_mean": 8045732.0,
+      "wall_s_mean": 2.085232,
+      "runs": 3,
+      "cuda_graph": true,
+      "resident_input": true,
+      "cuda_memory_allocated_gb": 4.891
+    },
+    {
+      "backend": "b1_layerreplayv824",
+      "batch": 524288,
+      "cycles": 64,
+      "capture_po": false,
+      "cycle_stimuli_per_s_mean": 8167596.0,
+      "wall_s_mean": 4.108238,
+      "runs": 5,
+      "cuda_graph": true,
+      "resident_input": true,
+      "cuda_memory_allocated_gb": 4.803
+    }
+  ],
+  "large_rtl_rocket_core_no_tc_cuda_command": "CUDA_VISIBLE_DEVICES=1 ./.venv/bin/python scripts/bench_rocket_backends.py --json-netlist build/large_rtl/rocket_Rocket_lut.json --backends cuda_lutreplay --batches 262144,524288 --cycles 64 --runs 3 --warmup 1 --skip-reference --json",
+  "large_rtl_rocket_core_no_tc_cuda": [
+    {
+      "backend": "cuda_lutreplay",
+      "batch": 262144,
+      "cycles": 64,
+      "capture_po": false,
+      "uses_tensor_cores": false,
+      "cycle_stimuli_per_s_mean": 6850962.0,
+      "wall_s_mean": 2.448885,
+      "cuda_graph": true,
+      "resident_input": true,
+      "cuda_memory_allocated_gb": 19.337
+    },
+    {
+      "backend": "cuda_lutreplay",
+      "batch": 262144,
+      "cycles": 64,
+      "capture_po": true,
+      "uses_tensor_cores": false,
+      "cycle_stimuli_per_s_mean": 6838982.0,
+      "wall_s_mean": 2.453174,
+      "cuda_graph": true,
+      "resident_input": true,
+      "cuda_memory_allocated_gb": 39.117
+    },
+    {
+      "backend": "cuda_lutreplay",
+      "batch": 524288,
+      "cycles": 64,
+      "capture_po": false,
+      "uses_tensor_cores": false,
+      "cycle_stimuli_per_s_mean": 12647510.0,
+      "wall_s_mean": 2.653047,
+      "cuda_graph": true,
+      "resident_input": true,
+      "cuda_memory_allocated_gb": 38.399
+    }
+  ],
+  "large_rtl_rocket_verilator_scale_c64": [
+    {
+      "processes": 64,
+      "total_batch": 262144,
+      "cycles": 64,
+      "cycle_stimuli_per_s_mean": 1291331.0,
+      "cycle_stimuli_per_s_stdev": 16850.0
+    },
+    {
+      "processes": 80,
+      "total_batch": 327680,
+      "cycles": 64,
+      "cycle_stimuli_per_s_mean": 1351159.0,
+      "cycle_stimuli_per_s_stdev": 12750.0
+    }
+  ],
+  "large_rtl_rocket_core_verilator_lut_command": "PYTHONPATH=. .venv/bin/python scripts/bench_rocket_verilator.py --skip-build --batch 4096 --cycles 256 --runs 3 --json",
+  "large_rtl_rocket_core_verilator_lut": {
+    "top": "Rocket",
+    "json_netlist": "build/large_rtl/rocket_Rocket_lut.json",
+    "verilog": "build/rocket_verilator/Rocket_lut.v",
+    "batch": 4096,
+    "cycles": 256,
+    "runs": 3,
+    "reset_cycles": 2,
+    "n_input_bits_including_clock": 401,
+    "n_output_bits": 1187,
+    "n_lut": 13406,
+    "n_dff": 4116,
+    "cycle_stimuli_per_s_mean": 36890.0,
+    "cycle_stimuli_per_s_stdev": 3686.0,
+    "per_seed_hz_mean": 9.01
+  },
+  "large_rtl_rocket_core_normalized": {
+    "tensorlut_fastpath_batch262144_cycles64": {
+      "cycle_stimuli_per_s": 8094000.0,
+      "lut_eval_per_s": 108500000000.0,
+      "monomial_eval_per_s": 555300000000.0,
+      "dff_update_per_s": 33320000000.0,
+      "memory_per_seed_mib": 0.0092
+    },
+    "tensorlut_fastpath_batch262144_capture_po_cycles64": {
+      "cycle_stimuli_per_s": 8046000.0,
+      "lut_eval_per_s": 107900000000.0,
+      "monomial_eval_per_s": 552000000000.0,
+      "dff_update_per_s": 33120000000.0,
+      "memory_per_seed_mib": 0.0187
+    },
+    "no_tc_cuda_batch262144_cycles64": {
+      "cycle_stimuli_per_s": 6851000.0,
+      "cuda_memory_allocated_gb": 19.337
+    },
+    "verilator_lut_batch4096_cycles256": {
+      "cycle_stimuli_per_s": 36890.0,
+      "lut_eval_per_s": 494500000.0,
+      "dff_update_per_s": 151800000.0
+    },
+    "verilator_64_process_batch262144_cycles64": {
+      "cycle_stimuli_per_s": 1291000.0
+    },
+    "verilator_80_process_batch327680_cycles64": {
+      "cycle_stimuli_per_s": 1351000.0
+    },
+    "tensorlut_vs_verilator_lut_speedup_1_process": 205.7,
+    "tensorlut_vs_verilator_lut_speedup_64_process": 6.27,
+    "tensorlut_vs_verilator_lut_speedup_80_process": 5.99,
+    "tensorlut_vs_no_tc_cuda_speedup_batch262144": 1.18,
+    "tensorlut_vs_no_tc_cuda_memory_reduction_batch262144": 8.05
+  },
+  "large_rtl_rocket8_yosys": {
+    "source": "third_party/simulators/RTeAAL-Sim/verilator/verilogs/freechips.rocketchip.system.OctaCoreConfig.v",
+    "dut_top": "ExampleRocketSystem",
+    "harness_top": "TestHarness",
+    "dut_raw": {
+      "wires": 416538,
+      "wire_bits": 5259285,
+      "ports": 40689,
+      "port_bits": 299024,
+      "memories": 1088,
+      "memory_bits": 2251600,
+      "processes": 751,
+      "cells": 168439
+    },
+    "harness_raw": {
+      "wires": 420860,
+      "wire_bits": 5289460,
+      "ports": 41386,
+      "port_bits": 304669,
+      "memories": 1164,
+      "memory_bits": 2149769256,
+      "processes": 782,
+      "cells": 169278
+    },
+    "note": "TestHarness includes SimAXIMem and inflates memory bits; TensorLUT compile statistics are reported for the Rocket core and submodules."
+  },
+  "large_rtl_rocket8_verilator": {
+    "build_command": "make -C third_party/simulators/RTeAAL-Sim/verilator/rocket21-8c/TestHarness -f VTestHarness.mk -j8",
+    "verilator_codegen": {
+      "verilog_mb": 7.664,
+      "modules": 289,
+      "cpp_mb": 98.277,
+      "cpp_files": 75,
+      "wall_s": 52.542,
+      "peak_alloc_mb": 1057.098
+    },
+    "binary": "third_party/simulators/RTeAAL-Sim/verilator/rocket21-8c/emulator_verilator",
+    "workload": "third_party/simulators/RTeAAL-Sim/benchmark/dhrystone.riscv",
+    "runs": [
+      {
+        "completed_cycles": 550352,
+        "mcycle": 248537,
+        "minstret": 194955,
+        "wall_s": 133.933385,
+        "sim_cycles_per_s": 4109.15
+      },
+      {
+        "completed_cycles": 550352,
+        "mcycle": 248537,
+        "minstret": 194955,
+        "wall_s": 133.622874,
+        "sim_cycles_per_s": 4118.7
+      },
+      {
+        "completed_cycles": 550352,
+        "mcycle": 248537,
+        "minstret": 194955,
+        "wall_s": 150.481161,
+        "sim_cycles_per_s": 3657.28
+      }
+    ],
+    "summary": {
+      "runs": 3,
+      "wall_s_mean": 139.345807,
+      "sim_cycles_per_s_mean": 3961.71,
+      "sim_cycles_per_s_stdev": 263.68
+    }
+  }
+}

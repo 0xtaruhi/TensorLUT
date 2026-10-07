@@ -1,0 +1,104 @@
+{
+  "host_logical_cpus": 80,
+  "max_procs": 80,
+  "results": [
+    {
+      "design": "Rocket",
+      "batch": 64,
+      "processes": 64,
+      "batch_per_process": 1,
+      "cycles": 64,
+      "wall_s": [
+        0.08295529894530773,
+        0.06478589959442616,
+        0.0815595518797636
+      ],
+      "cycle_stimuli_per_s_mean": 54273.532050246955,
+      "cycle_stimuli_per_s_stdev": 7762.521603126083
+    },
+    {
+      "design": "Rocket",
+      "batch": 240,
+      "processes": 80,
+      "batch_per_process": 3,
+      "cycles": 64,
+      "wall_s": [
+        0.0788199882954359,
+        0.07967759482562542,
+        0.08066198229789734
+      ],
+      "cycle_stimuli_per_s_mean": 192691.870299399,
+      "cycle_stimuli_per_s_stdev": 2226.290816676967
+    },
+    {
+      "design": "Rocket",
+      "batch": 960,
+      "processes": 80,
+      "batch_per_process": 12,
+      "cycles": 64,
+      "wall_s": [
+        0.11230242624878883,
+        0.1174231730401516,
+        0.11425302363932133
+      ],
+      "cycle_stimuli_per_s_mean": 536027.8999380181,
+      "cycle_stimuli_per_s_stdev": 12022.481999447136
+    },
+    {
+      "design": "Rocket",
+      "batch": 4080,
+      "processes": 80,
+      "batch_per_process": 51,
+      "cycles": 64,
+      "wall_s": [
+        0.25896622240543365,
+        0.26585064828395844,
+        0.24756666459143162
+      ],
+      "cycle_stimuli_per_s_mean": 1015089.5500998128,
+      "cycle_stimuli_per_s_stdev": 36741.482782575375
+    },
+    {
+      "design": "Rocket",
+      "batch": 16320,
+      "processes": 80,
+      "batch_per_process": 204,
+      "cycles": 64,
+      "wall_s": [
+        0.7926440853625536,
+        0.8113361168652773,
+        0.8183160163462162
+      ],
+      "cycle_stimuli_per_s_mean": 1293817.1751628893,
+      "cycle_stimuli_per_s_stdev": 21413.040192144814
+    },
+    {
+      "design": "Rocket",
+      "batch": 65520,
+      "processes": 80,
+      "batch_per_process": 819,
+      "cycles": 64,
+      "wall_s": [
+        3.1568046882748604,
+        3.192476576194167,
+        3.1673743594437838
+      ],
+      "cycle_stimuli_per_s_mean": 1321905.4784035282,
+      "cycle_stimuli_per_s_stdev": 7619.144899595826
+    },
+    {
+      "design": "Rocket",
+      "batch": 262080,
+      "processes": 80,
+      "batch_per_process": 3276,
+      "cycles": 64,
+      "wall_s": [
+        12.502425594255328,
+        12.702146135270596,
+        12.608866527676582
+      ],
+      "cycle_stimuli_per_s_mean": 1330782.711552057,
+      "cycle_stimuli_per_s_stdev": 10556.717718549407
+    }
+  ]
+}

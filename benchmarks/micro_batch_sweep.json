@@ -1,0 +1,250 @@
+{
+  "command": "scripts/bench.py --batch B --cycles 512 --runs 5 --cpu-batch 64 --backend gemm",
+  "results": [
+    {
+      "design": "lfsr16_free",
+      "mode": "GF2_AFFINE",
+      "batch": 64,
+      "cycles": 512,
+      "tensorlut_cycle_stimuli_per_s": 9078000.0
+    },
+    {
+      "design": "crc8_serial",
+      "mode": "GF2_AFFINE",
+      "batch": 64,
+      "cycles": 512,
+      "tensorlut_cycle_stimuli_per_s": 7933000.0
+    },
+    {
+      "design": "nfsr16",
+      "mode": "ANF",
+      "batch": 64,
+      "cycles": 512,
+      "tensorlut_cycle_stimuli_per_s": 3059000.0
+    },
+    {
+      "design": "lfsr8",
+      "mode": "ANF",
+      "batch": 64,
+      "cycles": 512,
+      "tensorlut_cycle_stimuli_per_s": 2599000.0
+    },
+    {
+      "design": "counter8",
+      "mode": "LUT_TENSOR",
+      "batch": 64,
+      "cycles": 512,
+      "tensorlut_cycle_stimuli_per_s": 1115000.0
+    },
+    {
+      "design": "lfsr16_free",
+      "mode": "GF2_AFFINE",
+      "batch": 256,
+      "cycles": 512,
+      "tensorlut_cycle_stimuli_per_s": 36150000.0
+    },
+    {
+      "design": "crc8_serial",
+      "mode": "GF2_AFFINE",
+      "batch": 256,
+      "cycles": 512,
+      "tensorlut_cycle_stimuli_per_s": 31150000.0
+    },
+    {
+      "design": "nfsr16",
+      "mode": "ANF",
+      "batch": 256,
+      "cycles": 512,
+      "tensorlut_cycle_stimuli_per_s": 12340000.0
+    },
+    {
+      "design": "lfsr8",
+      "mode": "ANF",
+      "batch": 256,
+      "cycles": 512,
+      "tensorlut_cycle_stimuli_per_s": 10210000.0
+    },
+    {
+      "design": "counter8",
+      "mode": "LUT_TENSOR",
+      "batch": 256,
+      "cycles": 512,
+      "tensorlut_cycle_stimuli_per_s": 4239000.0
+    },
+    {
+      "design": "lfsr16_free",
+      "mode": "GF2_AFFINE",
+      "batch": 1024,
+      "cycles": 512,
+      "tensorlut_cycle_stimuli_per_s": 142600000.0
+    },
+    {
+      "design": "crc8_serial",
+      "mode": "GF2_AFFINE",
+      "batch": 1024,
+      "cycles": 512,
+      "tensorlut_cycle_stimuli_per_s": 119300000.0
+    },
+    {
+      "design": "nfsr16",
+      "mode": "ANF",
+      "batch": 1024,
+      "cycles": 512,
+      "tensorlut_cycle_stimuli_per_s": 48250000.0
+    },
+    {
+      "design": "lfsr8",
+      "mode": "ANF",
+      "batch": 1024,
+      "cycles": 512,
+      "tensorlut_cycle_stimuli_per_s": 39550000.0
+    },
+    {
+      "design": "counter8",
+      "mode": "LUT_TENSOR",
+      "batch": 1024,
+      "cycles": 512,
+      "tensorlut_cycle_stimuli_per_s": 16850000.0
+    },
+    {
+      "design": "lfsr16_free",
+      "mode": "GF2_AFFINE",
+      "batch": 4096,
+      "cycles": 512,
+      "tensorlut_cycle_stimuli_per_s": 520900000.0
+    },
+    {
+      "design": "crc8_serial",
+      "mode": "GF2_AFFINE",
+      "batch": 4096,
+      "cycles": 512,
+      "tensorlut_cycle_stimuli_per_s": 462700000.0
+    },
+    {
+      "design": "nfsr16",
+      "mode": "ANF",
+      "batch": 4096,
+      "cycles": 512,
+      "tensorlut_cycle_stimuli_per_s": 177400000.0
+    },
+    {
+      "design": "lfsr8",
+      "mode": "ANF",
+      "batch": 4096,
+      "cycles": 512,
+      "tensorlut_cycle_stimuli_per_s": 144300000.0
+    },
+    {
+      "design": "counter8",
+      "mode": "LUT_TENSOR",
+      "batch": 4096,
+      "cycles": 512,
+      "tensorlut_cycle_stimuli_per_s": 64510000.0
+    },
+    {
+      "design": "lfsr16_free",
+      "mode": "GF2_AFFINE",
+      "batch": 16384,
+      "cycles": 512,
+      "tensorlut_cycle_stimuli_per_s": 1589000000.0
+    },
+    {
+      "design": "crc8_serial",
+      "mode": "GF2_AFFINE",
+      "batch": 16384,
+      "cycles": 512,
+      "tensorlut_cycle_stimuli_per_s": 1484000000.0
+    },
+    {
+      "design": "nfsr16",
+      "mode": "ANF",
+      "batch": 16384,
+      "cycles": 512,
+      "tensorlut_cycle_stimuli_per_s": 569100000.0
+    },
+    {
+      "design": "lfsr8",
+      "mode": "ANF",
+      "batch": 16384,
+      "cycles": 512,
+      "tensorlut_cycle_stimuli_per_s": 522000000.0
+    },
+    {
+      "design": "counter8",
+      "mode": "LUT_TENSOR",
+      "batch": 16384,
+      "cycles": 512,
+      "tensorlut_cycle_stimuli_per_s": 236000000.0
+    },
+    {
+      "design": "lfsr16_free",
+      "mode": "GF2_AFFINE",
+      "batch": 65536,
+      "cycles": 512,
+      "tensorlut_cycle_stimuli_per_s": 2435000000.0
+    },
+    {
+      "design": "crc8_serial",
+      "mode": "GF2_AFFINE",
+      "batch": 65536,
+      "cycles": 512,
+      "tensorlut_cycle_stimuli_per_s": 2568000000.0
+    },
+    {
+      "design": "nfsr16",
+      "mode": "ANF",
+      "batch": 65536,
+      "cycles": 512,
+      "tensorlut_cycle_stimuli_per_s": 1054000000.0
+    },
+    {
+      "design": "lfsr8",
+      "mode": "ANF",
+      "batch": 65536,
+      "cycles": 512,
+      "tensorlut_cycle_stimuli_per_s": 981700000.0
+    },
+    {
+      "design": "counter8",
+      "mode": "LUT_TENSOR",
+      "batch": 65536,
+      "cycles": 512,
+      "tensorlut_cycle_stimuli_per_s": 498900000.0
+    },
+    {
+      "design": "lfsr16_free",
+      "mode": "GF2_AFFINE",
+      "batch": 262144,
+      "cycles": 512,
+      "tensorlut_cycle_stimuli_per_s": 2640000000.0
+    },
+    {
+      "design": "crc8_serial",
+      "mode": "GF2_AFFINE",
+      "batch": 262144,
+      "cycles": 512,
+      "tensorlut_cycle_stimuli_per_s": 3003000000.0
+    },
+    {
+      "design": "nfsr16",
+      "mode": "ANF",
+      "batch": 262144,
+      "cycles": 512,
+      "tensorlut_cycle_stimuli_per_s": 1309000000.0
+    },
+    {
+      "design": "lfsr8",
+      "mode": "ANF",
+      "batch": 262144,
+      "cycles": 512,
+      "tensorlut_cycle_stimuli_per_s": 1129000000.0
+    },
+    {
+      "design": "counter8",
+      "mode": "LUT_TENSOR",
+      "batch": 262144,
+      "cycles": 512,
+      "tensorlut_cycle_stimuli_per_s": 633900000.0
+    }
+  ]
+}

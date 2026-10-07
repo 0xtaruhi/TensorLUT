@@ -1,0 +1,22 @@
+[project]
+name = "rtlgemm"
+version = "0.0.1"
+description = "Exact batched RTL simulation on binary tensor cores via ANF-lifted GEMM (TensorLUT)"
+requires-python = ">=3.12"
+license = {text = "MIT"}
+dependencies = ["numpy"]
+
+[project.optional-dependencies]
+gpu = ["torch"]
+dev = ["pytest"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["rtlgemm", "rtlgemm.frontend", "rtlgemm.ir", "rtlgemm.kernels",
+            "rtlgemm.runtime", "rtlgemm.reference"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

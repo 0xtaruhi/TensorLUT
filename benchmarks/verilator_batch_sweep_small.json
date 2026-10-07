@@ -1,0 +1,398 @@
+{
+  "host_logical_cpus": 80,
+  "max_procs": 80,
+  "results": [
+    {
+      "design": "lfsr16_free",
+      "batch": 64,
+      "processes": 64,
+      "batch_per_process": 1,
+      "cycles": 512,
+      "wall_s": [
+        0.09924523532390594,
+        0.08260106481611729,
+        0.08285962045192719
+      ],
+      "cycle_stimuli_per_s_mean": 374112.6555018385,
+      "cycle_stimuli_per_s_stdev": 38058.73814636298
+    },
+    {
+      "design": "lfsr16_free",
+      "batch": 240,
+      "processes": 80,
+      "batch_per_process": 3,
+      "cycles": 512,
+      "wall_s": [
+        0.10052895545959473,
+        0.10045924782752991,
+        0.09188887476921082
+      ],
+      "cycle_stimuli_per_s_mean": 1260928.1308614204,
+      "cycle_stimuli_per_s_stdev": 66113.13809096983
+    },
+    {
+      "design": "lfsr16_free",
+      "batch": 960,
+      "processes": 80,
+      "batch_per_process": 12,
+      "cycles": 512,
+      "wall_s": [
+        0.09517166204750538,
+        0.09687400236725807,
+        0.09805242903530598
+      ],
+      "cycle_stimuli_per_s_mean": 5083732.670866746,
+      "cycle_stimuli_per_s_stdev": 76352.47463460728
+    },
+    {
+      "design": "lfsr16_free",
+      "batch": 4080,
+      "processes": 80,
+      "batch_per_process": 51,
+      "cycles": 512,
+      "wall_s": [
+        0.10017359629273415,
+        0.09309309534728527,
+        0.09437110647559166
+      ],
+      "cycle_stimuli_per_s_mean": 21809486.999012187,
+      "cycle_stimuli_per_s_stdev": 841821.9651661254
+    },
+    {
+      "design": "lfsr16_free",
+      "batch": 16320,
+      "processes": 80,
+      "batch_per_process": 204,
+      "cycles": 512,
+      "wall_s": [
+        0.08037586137652397,
+        0.07480689883232117,
+        0.07870248891413212
+      ],
+      "cycle_stimuli_per_s_mean": 107276105.92623119,
+      "cycle_stimuli_per_s_stdev": 3986420.429316926
+    },
+    {
+      "design": "lfsr16_free",
+      "batch": 65520,
+      "processes": 80,
+      "batch_per_process": 819,
+      "cycles": 512,
+      "wall_s": [
+        0.11878449097275734,
+        0.1306258998811245,
+        0.12623822689056396
+      ],
+      "cycle_stimuli_per_s_mean": 268320583.30733684,
+      "cycle_stimuli_per_s_stdev": 12994526.173852846
+    },
+    {
+      "design": "lfsr16_free",
+      "batch": 262080,
+      "processes": 80,
+      "batch_per_process": 3276,
+      "cycles": 512,
+      "wall_s": [
+        0.2535874880850315,
+        0.2721331901848316,
+        0.2914146538823843
+      ],
+      "cycle_stimuli_per_s_mean": 494230933.05386955,
+      "cycle_stimuli_per_s_stdev": 34357337.12338458
+    },
+    {
+      "design": "counter8",
+      "batch": 64,
+      "processes": 64,
+      "batch_per_process": 1,
+      "cycles": 512,
+      "wall_s": [
+        0.09610133804380894,
+        0.07980616763234138,
+        0.07633488439023495
+      ],
+      "cycle_stimuli_per_s_mean": 393611.5396745397,
+      "cycle_stimuli_per_s_stdev": 46532.10752009083
+    },
+    {
+      "design": "counter8",
+      "batch": 240,
+      "processes": 80,
+      "batch_per_process": 3,
+      "cycles": 512,
+      "wall_s": [
+        0.09714335575699806,
+        0.10013947822153568,
+        0.09541730396449566
+      ],
+      "cycle_stimuli_per_s_mean": 1259946.6295618238,
+      "cycle_stimuli_per_s_stdev": 30669.863336489627
+    },
+    {
+      "design": "counter8",
+      "batch": 960,
+      "processes": 80,
+      "batch_per_process": 12,
+      "cycles": 512,
+      "wall_s": [
+        0.09936129860579967,
+        0.10114221833646297,
+        0.10107753984630108
+      ],
+      "cycle_stimuli_per_s_mean": 4889762.779310979,
+      "cycle_stimuli_per_s_stdev": 49416.03547617418
+    },
+    {
+      "design": "counter8",
+      "batch": 4080,
+      "processes": 80,
+      "batch_per_process": 51,
+      "cycles": 512,
+      "wall_s": [
+        0.09031454659998417,
+        0.0877211894840002,
+        0.09422586672008038
+      ],
+      "cycle_stimuli_per_s_mean": 23037722.62724865,
+      "cycle_stimuli_per_s_stdev": 825822.3729970126
+    },
+    {
+      "design": "counter8",
+      "batch": 16320,
+      "processes": 80,
+      "batch_per_process": 204,
+      "cycles": 512,
+      "wall_s": [
+        0.09090244024991989,
+        0.07965618744492531,
+        0.07693693786859512
+      ],
+      "cycle_stimuli_per_s_mean": 101808711.26529248,
+      "cycle_stimuli_per_s_stdev": 8761398.03621972
+    },
+    {
+      "design": "counter8",
+      "batch": 65520,
+      "processes": 80,
+      "batch_per_process": 819,
+      "cycles": 512,
+      "wall_s": [
+        0.12010196596384048,
+        0.12527818232774734,
+        0.11949414573609829
+      ],
+      "cycle_stimuli_per_s_mean": 275941362.8586203,
+      "cycle_stimuli_per_s_stdev": 7108727.370460388
+    },
+    {
+      "design": "counter8",
+      "batch": 262080,
+      "processes": 80,
+      "batch_per_process": 3276,
+      "cycles": 512,
+      "wall_s": [
+        0.3067271504551172,
+        0.2574310414493084,
+        0.25725055672228336
+      ],
+      "cycle_stimuli_per_s_mean": 493443844.1404985,
+      "cycle_stimuli_per_s_stdev": 48472197.85996232
+    },
+    {
+      "design": "s349_bench",
+      "batch": 64,
+      "processes": 64,
+      "batch_per_process": 1,
+      "cycles": 512,
+      "wall_s": [
+        0.09612607769668102,
+        0.08112898841500282,
+        0.07966149039566517
+      ],
+      "cycle_stimuli_per_s_mean": 385375.3995048225,
+      "cycle_stimuli_per_s_stdev": 38708.44874199193
+    },
+    {
+      "design": "s349_bench",
+      "batch": 240,
+      "processes": 80,
+      "batch_per_process": 3,
+      "cycles": 512,
+      "wall_s": [
+        0.09131753072142601,
+        0.09553593024611473,
+        0.09848211705684662
+      ],
+      "cycle_stimuli_per_s_mean": 1293197.052426395,
+      "cycle_stimuli_per_s_stdev": 49319.314900719895
+    },
+    {
+      "design": "s349_bench",
+      "batch": 960,
+      "processes": 80,
+      "batch_per_process": 12,
+      "cycles": 512,
+      "wall_s": [
+        0.0970083698630333,
+        0.09472494758665562,
+        0.10266784578561783
+      ],
+      "cycle_stimuli_per_s_mean": 5014391.644111021,
+      "cycle_stimuli_per_s_stdev": 205783.87246424577
+    },
+    {
+      "design": "s349_bench",
+      "batch": 4080,
+      "processes": 80,
+      "batch_per_process": 51,
+      "cycles": 512,
+      "wall_s": [
+        0.09006653726100922,
+        0.08242424204945564,
+        0.08518274873495102
+      ],
+      "cycle_stimuli_per_s_mean": 24353598.35620478,
+      "cycle_stimuli_per_s_stdev": 1085234.6676125214
+    },
+    {
+      "design": "s349_bench",
+      "batch": 16320,
+      "processes": 80,
+      "batch_per_process": 204,
+      "cycles": 512,
+      "wall_s": [
+        0.0987067949026823,
+        0.0878064688295126,
+        0.09012489207088947
+      ],
+      "cycle_stimuli_per_s_mean": 90843052.12030515,
+      "cycle_stimuli_per_s_stdev": 5498586.011933821
+    },
+    {
+      "design": "s349_bench",
+      "batch": 65520,
+      "processes": 80,
+      "batch_per_process": 819,
+      "cycles": 512,
+      "wall_s": [
+        0.16864118352532387,
+        0.18408092483878136,
+        0.1785861849784851
+      ],
+      "cycle_stimuli_per_s_mean": 189666866.35127077,
+      "cycle_stimuli_per_s_stdev": 8490364.299705125
+    },
+    {
+      "design": "s349_bench",
+      "batch": 262080,
+      "processes": 80,
+      "batch_per_process": 3276,
+      "cycles": 512,
+      "wall_s": [
+        0.42350476421415806,
+        0.4294339381158352,
+        0.5083555858582258
+      ],
+      "cycle_stimuli_per_s_mean": 297757428.50746083,
+      "cycle_stimuli_per_s_stdev": 29352034.1410316
+    },
+    {
+      "design": "s1488_bench",
+      "batch": 64,
+      "processes": 64,
+      "batch_per_process": 1,
+      "cycles": 512,
+      "wall_s": [
+        0.09649008512496948,
+        0.0767696462571621,
+        0.07460727356374264
+      ],
+      "cycle_stimuli_per_s_mean": 401880.5103133714,
+      "cycle_stimuli_per_s_stdev": 54290.327139469235
+    },
+    {
+      "design": "s1488_bench",
+      "batch": 240,
+      "processes": 80,
+      "batch_per_process": 3,
+      "cycles": 512,
+      "wall_s": [
+        0.09912357851862907,
+        0.1059296727180481,
+        0.09455674327909946
+      ],
+      "cycle_stimuli_per_s_mean": 1233072.24757122,
+      "cycle_stimuli_per_s_stdev": 69994.34556021277
+    },
+    {
+      "design": "s1488_bench",
+      "batch": 960,
+      "processes": 80,
+      "batch_per_process": 12,
+      "cycles": 512,
+      "wall_s": [
+        0.09504886716604233,
+        0.09612793661653996,
+        0.09923631325364113
+      ],
+      "cycle_stimuli_per_s_mean": 5079148.698017413,
+      "cycle_stimuli_per_s_stdev": 113016.35147444085
+    },
+    {
+      "design": "s1488_bench",
+      "batch": 4080,
+      "processes": 80,
+      "batch_per_process": 51,
+      "cycles": 512,
+      "wall_s": [
+        0.08815978839993477,
+        0.08189646154642105,
+        0.07246350683271885
+      ],
+      "cycle_stimuli_per_s_mean": 26010079.258290187,
+      "cycle_stimuli_per_s_stdev": 2602969.798162138
+    },
+    {
+      "design": "s1488_bench",
+      "batch": 16320,
+      "processes": 80,
+      "batch_per_process": 204,
+      "cycles": 512,
+      "wall_s": [
+        0.1267230100929737,
+        0.14453044719994068,
+        0.14580751582980156
+      ],
+      "cycle_stimuli_per_s_mean": 60352954.060456514,
+      "cycle_stimuli_per_s_stdev": 4843264.563689854
+    },
+    {
+      "design": "s1488_bench",
+      "batch": 65520,
+      "processes": 80,
+      "batch_per_process": 819,
+      "cycles": 512,
+      "wall_s": [
+        0.356991333886981,
+        0.3402993120253086,
+        0.33647939562797546
+      ],
+      "cycle_stimuli_per_s_mean": 97415241.32300973,
+      "cycle_stimuli_per_s_stdev": 3036245.5365997753
+    },
+    {
+      "design": "s1488_bench",
+      "batch": 262080,
+      "processes": 80,
+      "batch_per_process": 3276,
+      "cycles": 512,
+      "wall_s": [
+        1.1807771548628807,
+        1.2197637408971786,
+        1.2117320895195007
+      ],
+      "cycle_stimuli_per_s_mean": 111462780.26158558,
+      "cycle_stimuli_per_s_stdev": 1921491.710482588
+    }
+  ]
+}

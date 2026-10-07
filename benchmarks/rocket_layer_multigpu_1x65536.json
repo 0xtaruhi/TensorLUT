@@ -1,0 +1,64 @@
+{
+  "top": "Rocket",
+  "gpus": [
+    1
+  ],
+  "batch_per_gpu": 65536,
+  "total_batch": 65536,
+  "cycles": 64,
+  "runs": 3,
+  "backend": "layer",
+  "chunk_outputs": 24,
+  "workers": [
+    {
+      "rank": 0,
+      "gpu": 1,
+      "batch": 65536,
+      "cycles": 64,
+      "build_warmup_s": 7.412535233423114,
+      "runs": [
+        {
+          "run": 1,
+          "wall_s": 0.40740594640374184
+        },
+        {
+          "run": 2,
+          "wall_s": 0.40765769593417645
+        },
+        {
+          "run": 3,
+          "wall_s": 0.4075318742543459
+        }
+      ],
+      "cuda_memory_allocated_gb": 0.392676864
+    }
+  ],
+  "aggregate_runs": [
+    {
+      "run": 1,
+      "wall_s_max": 0.40740594640374184,
+      "worker_wall_s": [
+        0.40740594640374184
+      ],
+      "cycle_stimuli_per_s": 10295146.73760657
+    },
+    {
+      "run": 2,
+      "wall_s_max": 0.40765769593417645,
+      "worker_wall_s": [
+        0.40765769593417645
+      ],
+      "cycle_stimuli_per_s": 10288788.956598638
+    },
+    {
+      "run": 3,
+      "wall_s_max": 0.4075318742543459,
+      "worker_wall_s": [
+        0.4075318742543459
+      ],
+      "cycle_stimuli_per_s": 10291965.524596687
+    }
+  ],
+  "cycle_stimuli_per_s_mean": 10291967.072933964,
+  "cycle_stimuli_per_s_stdev": 3178.8907867710773
+}

@@ -1,0 +1,224 @@
+{
+  "top": "Rocket",
+  "json_netlist": "build/large_rtl/rocket_Rocket_lut.json",
+  "executable": "build/rocket_verilator/obj_Rocket_lut/vsim_Rocket_lut",
+  "host_logical_cpus": 80,
+  "n_input_ports": 51,
+  "n_output_ports": 107,
+  "n_input_bits_including_clock": 401,
+  "n_output_bits": 1187,
+  "n_lut": 13406,
+  "n_dff": 4116,
+  "results": [
+    {
+      "processes": 1,
+      "batch_per_process": 4096,
+      "total_batch": 4096,
+      "cycles": 256,
+      "runs": [
+        {
+          "run": 1,
+          "wall_s": 26.557438638061285,
+          "cycle_stimuli_per_s": 39483.32571866377,
+          "sum_worker_cycle_stimuli_per_s": 39507.45,
+          "max_worker_wall_s": 26.541224,
+          "worker_acc_xor": 15844634043451944607
+        },
+        {
+          "run": 2,
+          "wall_s": 26.875479348003864,
+          "cycle_stimuli_per_s": 39016.08549645763,
+          "sum_worker_cycle_stimuli_per_s": 39039.71,
+          "max_worker_wall_s": 26.859219,
+          "worker_acc_xor": 16556775126930359783
+        },
+        {
+          "run": 3,
+          "wall_s": 26.510510322637856,
+          "cycle_stimuli_per_s": 39553.21822321164,
+          "sum_worker_cycle_stimuli_per_s": 39577.23,
+          "max_worker_wall_s": 26.494425,
+          "worker_acc_xor": 11048723027776729935
+        }
+      ],
+      "cycle_stimuli_per_s_mean": 39350.87647944435,
+      "cycle_stimuli_per_s_stdev": 292.03594344686934,
+      "parallel_efficiency_vs_1_process": 1.0
+    },
+    {
+      "processes": 8,
+      "batch_per_process": 4096,
+      "total_batch": 32768,
+      "cycles": 256,
+      "runs": [
+        {
+          "run": 1,
+          "wall_s": 32.311807851307094,
+          "cycle_stimuli_per_s": 259614.31927928043,
+          "sum_worker_cycle_stimuli_per_s": 308567.88,
+          "max_worker_wall_s": 32.287532,
+          "worker_acc_xor": 9260186755095831090
+        },
+        {
+          "run": 2,
+          "wall_s": 27.413690658286214,
+          "cycle_stimuli_per_s": 306000.68062942167,
+          "sum_worker_cycle_stimuli_per_s": 313361.01,
+          "max_worker_wall_s": 27.390636,
+          "worker_acc_xor": 5283115677384103270
+        },
+        {
+          "run": 3,
+          "wall_s": 32.10952897183597,
+          "cycle_stimuli_per_s": 261249.79931527015,
+          "sum_worker_cycle_stimuli_per_s": 308341.64,
+          "max_worker_wall_s": 32.08454,
+          "worker_acc_xor": 12824452438500141972
+        }
+      ],
+      "cycle_stimuli_per_s_mean": 275621.5997413241,
+      "cycle_stimuli_per_s_stdev": 26321.7612526444,
+      "parallel_efficiency_vs_1_process": 0.8755256057806619
+    },
+    {
+      "processes": 16,
+      "batch_per_process": 4096,
+      "total_batch": 65536,
+      "cycles": 256,
+      "runs": [
+        {
+          "run": 1,
+          "wall_s": 27.407342384569347,
+          "cycle_stimuli_per_s": 612143.117146804,
+          "sum_worker_cycle_stimuli_per_s": 629106.3,
+          "max_worker_wall_s": 27.382131,
+          "worker_acc_xor": 14543160573694408532
+        },
+        {
+          "run": 2,
+          "wall_s": 27.52277089189738,
+          "cycle_stimuli_per_s": 609575.8332580954,
+          "sum_worker_cycle_stimuli_per_s": 625709.15,
+          "max_worker_wall_s": 27.494688,
+          "worker_acc_xor": 2407217337197278219
+        },
+        {
+          "run": 3,
+          "wall_s": 27.525656156241894,
+          "cycle_stimuli_per_s": 609511.9369641435,
+          "sum_worker_cycle_stimuli_per_s": 630326.3,
+          "max_worker_wall_s": 27.508013,
+          "worker_acc_xor": 1476298784293618936
+        }
+      ],
+      "cycle_stimuli_per_s_mean": 610410.295789681,
+      "cycle_stimuli_per_s_stdev": 1501.0073537033124,
+      "parallel_efficiency_vs_1_process": 0.9694992056094037
+    },
+    {
+      "processes": 32,
+      "batch_per_process": 4096,
+      "total_batch": 131072,
+      "cycles": 256,
+      "runs": [
+        {
+          "run": 1,
+          "wall_s": 32.7082706624642,
+          "cycle_stimuli_per_s": 1025869.950333597,
+          "sum_worker_cycle_stimuli_per_s": 1221880.19,
+          "max_worker_wall_s": 32.678442,
+          "worker_acc_xor": 16770147270519374687
+        },
+        {
+          "run": 2,
+          "wall_s": 32.89561214577407,
+          "cycle_stimuli_per_s": 1020027.5906496717,
+          "sum_worker_cycle_stimuli_per_s": 1219563.38,
+          "max_worker_wall_s": 32.868845,
+          "worker_acc_xor": 5223542524798122187
+        },
+        {
+          "run": 3,
+          "wall_s": 28.49469258170575,
+          "cycle_stimuli_per_s": 1177567.7840280586,
+          "sum_worker_cycle_stimuli_per_s": 1230745.68,
+          "max_worker_wall_s": 28.470036,
+          "worker_acc_xor": 1191158145558587759
+        }
+      ],
+      "cycle_stimuli_per_s_mean": 1074488.4416704425,
+      "cycle_stimuli_per_s_stdev": 89317.11150349675,
+      "parallel_efficiency_vs_1_process": 0.853291382715231
+    },
+    {
+      "processes": 64,
+      "batch_per_process": 4096,
+      "total_batch": 262144,
+      "cycles": 256,
+      "runs": [
+        {
+          "run": 1,
+          "wall_s": 51.185819858685136,
+          "cycle_stimuli_per_s": 1311083.1121837168,
+          "sum_worker_cycle_stimuli_per_s": 1615897.58,
+          "max_worker_wall_s": 51.117317,
+          "worker_acc_xor": 11585026630392118164
+        },
+        {
+          "run": 2,
+          "wall_s": 50.70081948582083,
+          "cycle_stimuli_per_s": 1323624.8384262882,
+          "sum_worker_cycle_stimuli_per_s": 1614936.13,
+          "max_worker_wall_s": 50.659865,
+          "worker_acc_xor": 4548531706587512444
+        },
+        {
+          "run": 3,
+          "wall_s": 51.37882683053613,
+          "cycle_stimuli_per_s": 1306157.96700354,
+          "sum_worker_cycle_stimuli_per_s": 1616589.71,
+          "max_worker_wall_s": 51.299117,
+          "worker_acc_xor": 6235577984141608786
+        }
+      ],
+      "cycle_stimuli_per_s_mean": 1313621.9725378484,
+      "cycle_stimuli_per_s_stdev": 9005.95682024075,
+      "parallel_efficiency_vs_1_process": 0.521598123274984
+    },
+    {
+      "processes": 80,
+      "batch_per_process": 4096,
+      "total_batch": 327680,
+      "cycles": 256,
+      "runs": [
+        {
+          "run": 1,
+          "wall_s": 61.68294339906424,
+          "cycle_stimuli_per_s": 1359955.854526757,
+          "sum_worker_cycle_stimuli_per_s": 1451354.76,
+          "max_worker_wall_s": 61.603468,
+          "worker_acc_xor": 14058207728149685906
+        },
+        {
+          "run": 2,
+          "wall_s": 61.95937823224813,
+          "cycle_stimuli_per_s": 1353888.344159329,
+          "sum_worker_cycle_stimuli_per_s": 1450281.29,
+          "max_worker_wall_s": 61.871574,
+          "worker_acc_xor": 16876666962165565281
+        },
+        {
+          "run": 3,
+          "wall_s": 60.75800676830113,
+          "cycle_stimuli_per_s": 1380658.8540650634,
+          "sum_worker_cycle_stimuli_per_s": 1459414.6,
+          "max_worker_wall_s": 60.648573,
+          "worker_acc_xor": 4907123615360613602
+        }
+      ],
+      "cycle_stimuli_per_s_mean": 1364834.35091705,
+      "cycle_stimuli_per_s_stdev": 14036.19768405354,
+      "parallel_efficiency_vs_1_process": 0.4335463632017181
+    }
+  ]
+}

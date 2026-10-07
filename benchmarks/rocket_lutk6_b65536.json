@@ -1,0 +1,42 @@
+{
+  "top": "Rocket",
+  "mode": "LUT_TENSOR",
+  "n_state": 4116,
+  "n_input": 400,
+  "n_output_bits": 1187,
+  "n_lut": 13406,
+  "cycles": 64,
+  "runs": 3,
+  "warmup": 1,
+  "results": [
+    {
+      "backend": "b1_layerreplayv824",
+      "batch": 65536,
+      "cycles": 64,
+      "build_s": 23.573113907128572,
+      "runs": [
+        {
+          "run": 1,
+          "wall_s": 0.411239605396986
+        },
+        {
+          "run": 2,
+          "wall_s": 0.41166268289089203
+        },
+        {
+          "run": 3,
+          "wall_s": 0.4117937833070755
+        }
+      ],
+      "wall_s_mean": 0.4115653571983178,
+      "wall_s_stdev": 0.0002896247690272239,
+      "cycle_stimuli_per_s_mean": 10191100.700389909,
+      "po_mismatches_vs_gather": null,
+      "chunk_outputs": 24,
+      "cuda_graph": true,
+      "resident_input": true,
+      "capture_po": false,
+      "cuda_memory_allocated_gb": 0.392676864
+    }
+  ]
+}
