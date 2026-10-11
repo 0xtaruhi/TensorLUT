@@ -1,9 +1,6 @@
 %% ASP-DAC 2027 camera-ready. ACM sigconf (sample-sigconf).
 %% Compile: latexmk (pdflatex x2 + bibtex). acmart provides amsmath/graphicx/hyperref/xcolor/url.
 \documentclass[sigconf]{acmart}
-\makeatletter
-\AtBeginDocument{\global\@ACM@balancefalse}
-\makeatother
 
 % TODO(camera-ready): replace with the exact rights text, DOI and ISBN from the ACM rights form.
 \setcopyright{acmlicensed}
@@ -30,6 +27,7 @@
 
 \author{Zhengyi Zhang}
 \email{zhengyizhang24@m.fudan.edu.cn}
+% TODO(camera-ready): \orcid{0000-0000-0000-0000}
 \affiliation{%
   \department{State Key Laboratory of Integrated Chips and Systems}
   \institution{Fudan University}
@@ -38,6 +36,7 @@
 
 \author{Sijing Yang}
 \email{sjyang24@m.fudan.edu.cn}
+% TODO(camera-ready): \orcid{0000-0000-0000-0000}
 \affiliation{%
   \department{State Key Laboratory of Integrated Chips and Systems}
   \institution{Fudan University}
@@ -46,6 +45,7 @@
 
 \author{Yuwei Qu}
 \email{ywqu24@m.fudan.edu.cn}
+% TODO(camera-ready): \orcid{0000-0000-0000-0000}
 \affiliation{%
   \department{State Key Laboratory of Integrated Chips and Systems}
   \institution{Fudan University}
@@ -54,6 +54,7 @@
 
 \author{Zixuan Xiao}
 \email{22307130371@m.fudan.edu.cn}
+% TODO(camera-ready): \orcid{0000-0000-0000-0000}
 \affiliation{%
   \department{State Key Laboratory of Integrated Chips and Systems}
   \institution{Fudan University}
@@ -63,6 +64,7 @@
 \author{Lingli Wang}
 \authornote{Corresponding author.}
 \email{llwang@fudan.edu.cn}
+% TODO(camera-ready): \orcid{0000-0000-0000-0000}
 \affiliation{%
   \department{State Key Laboratory of Integrated Chips and Systems}
   \institution{Fudan University}
@@ -79,12 +81,14 @@ when their popcount is $k$, and an XOR is a parity. Written in algebraic normal 
 layer becomes two single-bit \mmapopc{} matrix products, the first followed by a degree check and the
 second by a parity. A tensor-core-aware compiler sends affine cones to one GF(2) GEMM, lowers bounded
 nonlinear cones to term-reduced ESOP, and tiles wide cones as levelized LUT-ANF. Every route keeps
-the synthesized LUT semantics, and traces match Icarus Verilog bit for bit at each cycle boundary. On
+the synthesized LUT semantics: ISCAS'89 traces match Icarus Verilog bit for bit at each cycle
+boundary, and RocketChip traces match a CPU netlist interpreter. On
 one RTX~4090, TensorLUT reaches $3.0\times10^9$ cycle$\cdot$stimuli/s on algebraic microbenchmarks.
 On RTeAAL's RocketChip core it sustains $9.5\times10^6$, $7.0\times$ the throughput of 80 Verilator
 processes on a 40-core server and $242\times$ that of one, and scales to $4.0\times10^7$ on four GPUs.
 Against RTLflow, a published GPU simulator, it is up to $2.5\times$ faster for batches up to $2^{12}$
-seeds and reaches 80\% of RTLflow's throughput at larger batches, while compiling $65\times$ faster.
+seeds and reaches 80\% of RTLflow's throughput at larger batches, while compiling $65\times$ faster
+after the shared synthesis step ($11\times$ end to end).
 \end{abstract}
 
 \ccsdesc[500]{Hardware~Simulation and emulation}
@@ -674,7 +678,8 @@ splits the Rocket flow. Lowering the RTL to 6-LUTs with Yosys/ABC takes 46s and 
 four simulators, which start from the same LUT/DFF netlist. TensorLUT then parses the netlist
 (0.4s), levelizes it (0.06s), builds the ANF tensors (6.5s), and captures the CUDA graph for one
 batch shape (2.0s): 9.0s in total. Verilator's C++ generation and \texttt{-O3} build take 208s,
-GEM's AIG synthesis and mapping 127s, and RTLflow's transpilation and compilation 585s. Since
+GEM's AIG synthesis and mapping 127s, and RTLflow's transpilation and compilation 585s. Including
+the shared 46s, the whole flow takes 55s for TensorLUT and 631s for RTLflow ($11\times$). Since
 TensorLUT is also faster per cycle than Verilator at every batch size, it leads Verilator end to end
 for any run length.
 Only the graph capture depends on $B$. The ANF build is linear in the LUT count, because each LUT's
@@ -879,12 +884,11 @@ the surviving monomials and takes parity. A compiler routes each cone to an affi
 bounded ESOP layer, or levelized LUT-ANF chunks, and keeps the resulting tensors on the GPU. On one
 RTX~4090 the Rocket core runs $7\times$ faster than 80 Verilator processes, beats the RTLflow GPU
 simulator for batches up to $2^{12}$ seeds and reaches 80\% of its throughput above, compiles in 9s,
-scales nearly linearly to four GPUs, and matches the reference traces bit for bit at every cycle
-boundary.
+scales nearly linearly to four GPUs, and matches its CPU netlist reference bit for bit at every
+cycle boundary.
 
-% TODO(camera-ready): fill in funding sources, or delete this section.
 \begin{acks}
-This work was supported in part by [funding sources].
+This work is supported by National Science and Technology Major Project (2021ZD0114701).
 \end{acks}
 
 \bibliographystyle{ACM-Reference-Format}
