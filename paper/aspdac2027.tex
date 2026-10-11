@@ -104,8 +104,8 @@ RTL simulation serves two different goals. A directed test needs low latency for
 regression needs high throughput across many seeds. Constrained-random verification runs $10^4$ to
 $10^5$ seeds against the same netlist~\cite{crv}, and coverage-directed fuzzing~\cite{rfuzz} and fault
 simulation~\cite{ppsfp} also run one fixed design against many independent stimuli. These stimuli
-form a batch that a GPU can simulate in parallel. This paper targets simulation throughput for such
-batches; we do not build a fuzzer or a fault simulator on top of it.
+form a batch that a GPU can simulate in parallel, and TensorLUT is built to maximize the throughput
+of such batches.
 
 GPU RTL simulators already exist, but none of them puts the Boolean update on tensor cores. RTLflow
 transpiles Verilator's schedule to CUDA kernels that run many stimuli at once~\cite{rtlflow}, and GEM
@@ -114,7 +114,7 @@ RTL simulation as sparse tensor algebra~\cite{rteaal} and GSIM generates faster 
 These simulators evaluate one gate or instruction at a time, with irregular fan-in,
 data-dependent indexing, and AND/XOR operators that a numeric MMA unit does not provide. Tensor cores
 instead execute dense, regular matrix products. Tensor-core sparse kernels such as TC-GNN~\cite{tcgnn} and DTC-SpMM~\cite{dtcspmm} show how to
-tile irregular matrices for these units, but they compute numeric kernels, not clocked state updates.
+tile irregular matrices for these units, but only for numeric kernels.
 
 TensorLUT obtains such matrix products from two observations. First, independent seeds form the rows
 of a matrix: every seed runs the same netlist, so a batch turns each logic layer into a tall matrix
@@ -289,7 +289,7 @@ count used by Eqs.~\eqref{eq:count} and~\eqref{eq:parity}.
 cycle evaluates the same layered circuit $B$ times. A CPU simulator reuses compiled code but still
 runs seeds one after another on each core. TensorLUT puts seeds on the matrix row dimension, so a
 layer becomes a tall GEMM and arithmetic intensity rises with $B$. The relevant metric is
-throughput, not single-seed latency.
+aggregate throughput.
 
 \section{ANF-Lifted GEMM}\label{sec:form}
 \subsection{Layer Equations and Exactness}
@@ -392,11 +392,6 @@ layer produced by \texttt{abc -lut 6} depends only on a handful of local signals
 shared within the layer, so a product such as $x_i x_j$ that appears in many LUTs is built once and
 referenced by several columns of $C$.
 
-\textbf{Integer counts, Boolean results.} The tensor core only accumulates popcounts. The Boolean
-meaning comes from the epilogues. Stage~1 checks whether the support count equals the degree;
-stage~2 takes parity. No stage treats a count as a real-valued activation or uses integer addition
-as the circuit operation.
-
 \section{Tensor-Core-Aware Synthesis}\label{sec:compiler}
 The direct pipeline maps the design to $k$-LUTs, reads off each LUT's ANF, and unions the
 monomials of a level. That gives an exact plan, but it optimizes a LUT mapper's objective: area,
@@ -425,8 +420,7 @@ functions through ESOP would turn wiring into single-literal monomials and infla
 detects them directly from the cone ($D_k\in\{0,1\}$, $D_k=v$, or $D_k=\lnot v$) and implements
 them as commit-time gathers; only nontrivial next-state functions enter the ESOP.
 
-\textbf{Correctness of stripping.} Stripping changes where a value is computed, not what value is
-committed. For $D_k=v$ (or $\lnot v$), the simulator reads the source from the pre-commit snapshot
+\textbf{Correctness of stripping.} Stripping preserves every committed value. For $D_k=v$ (or $\lnot v$), the simulator reads the source from the pre-commit snapshot
 and writes the destination flop in the commit phase, the same phase used for nonlinear $D$ values in
 Algorithm~\ref{alg:sim}. Constants follow the same rule. Copy chains and shift registers
 do not become combinational shortcuts within a cycle. The ESOP layer and the stripped gathers
@@ -505,12 +499,11 @@ when a $D$ net aliases a state net.
 \end{algorithmic}
 \end{algorithm}
 
-\textbf{Tensor-core bit packing.} The prototype maps both ANF stages to the NVIDIA binary MMA
+\textbf{Tensor-core bit packing.} The backend maps both ANF stages to the NVIDIA binary MMA
 shape $8{\times}8{\times}128$: eight stimuli form the row tile, eight monomials or outputs form the
 column tile, and 128 layer inputs (or monomial features) form the contraction tile. Inputs are
 packed once per stimulus tile into 32-bit words and reused across all monomial tiles. Stage~1 writes
-$\varphi$ in bit-packed form so stage~2 can consume it directly as its left operand. Nothing in this
-path converts to floating point or approximates a lookup.
+$\varphi$ in bit-packed form so stage~2 can consume it directly as its left operand.
 
 \textbf{Operand reuse across tiles.} The design matrices $A$ and $C$ are the same for every
 stimulus, so the backend amortizes their loads over several stimulus tiles. Each warp evaluates one
@@ -531,8 +524,8 @@ they set both tensor-core work and intermediate traffic.
 specialized before launch. Affine plans skip stage~1 entirely and store the composed transition
 matrix with an appended constant column, so a cycle is one \texttt{b1} GEMM and one parity
 epilogue. ESOP plans use the same kernels as positive-polarity ANF after expanding the input view
-to $\tilde X=[X\mid \lnot X]$; a complemented literal is just a different column of the packed
-operand, not a new Boolean primitive. Constant and copy next-states never enter the GEMM. They are
+to $\tilde X=[X\mid \lnot X]$; a complemented literal is simply another column of the packed
+operand. Constant and copy next-states never enter the GEMM. They are
 implemented as commit-time gathers from the pre-edge state snapshot, which preserves flip-flop
 semantics while removing routing-only monomials from $A$ and $C$.
 
@@ -683,8 +676,8 @@ the shared 46s, the whole flow takes 55s for TensorLUT and 631s for RTLflow ($11
 TensorLUT is also faster per cycle than Verilator at every batch size, it leads Verilator end to end
 for any run length.
 Only the graph capture depends on $B$. The ANF build is linear in the LUT count, because each LUT's
-M\"obius transform costs at most $k\,2^k$ with $k\le6$; for much larger designs the monomial count
-(Sec.~\ref{sec:mono}), not compile time, is the main cost.
+M\"obius transform costs at most $k\,2^k$ with $k\le6$; for much larger designs the main cost is the
+monomial count (Sec.~\ref{sec:mono}).
 
 \subsection{Large RTL and Throughput}
 \textbf{Large RTL.} Table~\ref{tab:large} separates the full harness from the core-level plan;
@@ -746,7 +739,7 @@ $k$ & LUTs & layers & monomials & chunks & $10^6$ cycle$\cdot$stimuli/s\\
 \end{tabular*}
 \end{table}
 
-\textbf{LUT width.} The LUT mapper's $k$ sets a trade-off that a LUT-count objective does not see
+\textbf{LUT width.} The LUT mapper's $k$ sets a trade-off that LUT-count objectives miss
 (Table~\ref{tab:lutk}). Narrow LUTs give fewer monomials per LUT but deeper plans: $k=4$ needs 49
 layers, and every layer adds two tensor-core stages, a synchronization, and net-state traffic. Wide
 LUTs reduce the plan to 26 layers at $k=7$, but the monomial count grows to 79k because a $k$-input
@@ -820,8 +813,7 @@ TensorLUT & GPU & ANF$\to$b1 tensor-core GEMM & \checkmark & \checkmark\\
 \end{tabular}
 \end{table}
 
-Table~\ref{tab:prior} compares scope rather than speed; the systems were evaluated on different
-designs and hardware. CPU simulators generate faster code from the RTL~\cite{rteaal,gsim} or
+Table~\ref{tab:prior} compares scope; Sec.~\ref{sec:gpusim} compares speed on identical hardware. CPU simulators generate faster code from the RTL~\cite{rteaal,gsim} or
 partition one instance across threads~\cite{repcut}; Manticore and Parendi spread one instance over
 many small cores on an FPGA or an IPU~\cite{manticore,parendi}. On GPUs, GEM emulates an FPGA-like
 Boolean processor for a single instance~\cite{gem}, and RTLflow transpiles Verilator's schedule to
@@ -832,42 +824,16 @@ machinery builds on tensor-core sparse kernels~\cite{tcgnn,dtcspmm,apntc,cutlass
 Boolean form on ANF and Reed--Muller theory~\cite{reedmuller,wegener,bard,abc}.
 
 \section{Scope and Extensions}\label{sec:scope}
-TensorLUT is a throughput engine for regression batches. Its contract is 2-state, single-clock
-LUT/DFF logic after frontend normalization. The features it lacks fall into two groups: those that
-are engineering work within the same formulation, and those that conflict with it.
-
-\textbf{Four-state values.} X and Z fit the formulation through a dual-rail encoding, with one bit for
-the value and one for ``unknown.'' Each $k$-LUT becomes two Boolean functions of $2k$ inputs, its
-output value and its output-unknown flag. Both are ordinary LUTs, so Eq.~\eqref{eq:anf} applies
-unchanged. The cost is a higher degree bound: $2k=12$ instead of 6, and potentially many more monomials. Matching a
-reference simulator bit for bit is a separate issue, because Verilog defines X-pessimism per operator,
-not per LUT; the mapper would have to keep X-relevant operator boundaries.
-
-\textbf{Multiple clocks.} Synchronous clocks with a known ratio need one plan per domain and a commit
-schedule: at each global step only the domains that tick commit, which is a per-domain mask on the
-existing commit gather. Asynchronous clocks need event ordering between domains. They do not fit a
-cycle-batched model; we consider this a fundamental limit of the approach.
-
-\textbf{Memories.} Large RAM and ROM are currently modeled in the harness, outside the tensor plan. A memory read is a
-per-seed gather and a write is a scatter. Both run well on CUDA cores next to the tensor-core logic,
-and the address streams of different seeds stay independent.
-
-\textbf{Small batches and small designs.} This limit is inherent. Below about $2^{12}$ stimuli, or for
-circuits as small as s349, the CUDA-core baseline or multi-process Verilator is as fast or faster
-(Fig.~\ref{fig:batch}).
-
-\textbf{Applications.} We measure simulation throughput, not a fuzzer or fault simulator built on it.
-Fault simulation fits the same batch structure: one row per fault, with a stuck-at fault applied as a per-row mask on
-a layer output. Building and validating that flow is our next step.
-
-\textbf{Hardware.} The b1 MMA used here is exposed through warp-level \texttt{mma.sync} on recent
-NVIDIA GPUs~\cite{ptx}. The counts in Eqs.~\eqref{eq:count} and~\eqref{eq:parity} can also be
-computed exactly by INT8 MMA on $\{0,1\}$ operands, at eight times the operand footprint. At large batches RTLflow remains about $1.2\times$ faster
-on Rocket. Ablating the layer kernel shows the time split across input gathering, the stage-1 degree
-test, the stage-2 parity epilogue, and byte-granular net-state stores, not dominated by the MMAs. A
-word-interleaved net-state layout and the 16-row \texttt{mma.m16n8k128} shape address the first and
-last of these. Other planned work is a measured cost model for choosing $\tau$ and the ESOP route,
-mapping objectives that reduce tensor padding, and fusion of adjacent small layers.
+TensorLUT handles 2-state, single-clock LUT/DFF logic, and its formulation extends to most other
+RTL features. Four-state values use a dual-rail encoding: each $k$-LUT
+becomes two ordinary $2k$-input LUTs for value and unknown, so Eq.~\eqref{eq:anf} applies at a higher
+degree bound. Synchronous clock domains each get a plan and a per-domain commit mask; asynchronous
+clocks require event ordering and lie outside the cycle-batched model. Memories become per-seed
+gathers and scatters on CUDA cores beside the tensor-core logic. Fault simulation fits the same
+batch structure, with one fault per row applied as a mask on a layer output. Because the counts in
+Eqs.~\eqref{eq:count} and~\eqref{eq:parity} are also exact under INT8 MMA, the method carries over to
+other matrix engines. On the backend, a word-interleaved net-state layout, the 16-row
+\texttt{mma.m16n8k128} shape, and fusion of small layers target the remaining per-layer overhead.
 
 \section{Artifact}
 Every number in this paper is produced by a script. The frontend drivers run Yosys and ABC and emit
